@@ -1,32 +1,28 @@
-let fetch = require('node-fetch')
+let axios = require("axios");
+let handler = async(m, { conn, text }) => {
 
-let handler = async (m, { conn, text, usedPrefix }) => {
+    if (!text) return conn.reply(m.chat, 'Silahkan masukan Nomor Telpon untuk di SpamCall!\n\nMisal : !spamcall 1234567890', m)
 
-  if (!text) throw `Contoh Penggunaan\n${usedPrefix}spamcall 628xxxxxxxx`
+	axios.get(`https://api.clph.me/api/spamcall?no=8956227290699&apikey=LfwXDPM3`).then ((res) => {
+	 	let hasil = `${res.data.logs}`
 
-  let nomor = text.replace(/[^0-9]/gi, '').slice(2)
-
-  if (!nomor.startsWith('8')) throw `Contoh Penggunaan\n${usedPrefix}spamcall 628xxxxxxxx`
-  
-  m.reply('_*Tunggu permintaan anda sedang diproses.....*_')
-
-  let anu = await fetch(`https://id.jagreward.com/member/verify-mobile/${nomor}`).then(a => a.json())
-  
-  let spcall = `*Nomor Aine* : _${anu.phone_prefix}_\n\n_Aine berhasil menlpon anda!_`
-  
-  conn.reply(anu)
-  conn.reply(m.chat, `${spcall}`.trim(), m)
-
-  }
-
-handler.help = ['spamcall <nomor>']
-
-handler.tags = ['tools']
-
+    conn.reply(m.chat, hasil, m)
+	})
+}
+handler.help = ['spamcall'].map(v => v + ' <no hp>')
+handler.tags = ['spam']
 handler.command = /^(spamcall)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
 
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+handler.exp = 0
 handler.limit = true
-handler.premium = true
-handler.group = true
 
 module.exports = handler

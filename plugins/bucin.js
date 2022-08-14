@@ -1,5 +1,28 @@
-let handler  = async (m, { conn }) => {
-let bucin = [
+let handler = async (m, { conn, usedPrefix, command }) => {
+  await conn.reply(m.chat, `“${pickRandom(global.bucin)}”`, '', '', m)
+}
+handler.help = ['bucin']
+handler.tags = ['quotes']
+handler.command = /^(bucin)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = false
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+
+module.exports = handler
+
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())]
+}
+
+// https://jalantikus.com/tips/kata-kata-bucin/
+global.bucin = [
   "Aku memilih untuk sendiri, bukan karena menunggu yang sempurna, tetapi butuh yang tak pernah menyerah.",
   "Seorang yang single diciptakan bersama pasangan yang belum ditemukannya.",
   "Jomblo. Mungkin itu cara Tuhan untuk mengatakan 'Istirahatlah dari cinta yang salah'.",
@@ -121,21 +144,3 @@ let bucin = [
   "Aku tanpamu bagaikan ambulans tanpa wiuw wiuw wiuw.",
   "Cukup antartika aja yang jauh. Antarkita jangan."
 ]
-let dia = bucin[Math.floor(Math.random() * bucin.length)]
-  conn.reply(m.chat,`“${dia}”`, m)
-}
-handler.help = ['bucin']
-handler.tags = ['quotes']
-handler.command = /^(bucin)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-handler.limit = true
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-
-module.exports = handler
