@@ -9,7 +9,7 @@ let handler = async (m, { text }) => {
     delete res
     throw `Content-Length: ${res.headers.get('content-length')}`
   }
-  if (!/text|json/.test(res.headers.get('content-type'))) return conn.sendFile(m.chat, url, 'file', `*Link:* ${await shortlink(text)}\n\n*© Aine*`, m)
+  if (!/text|json/.test(res.headers.get('content-type'))) return conn.sendFile(m.chat, url, 'file', `*Link:* ${await shortlink(text)}\n\n*© ArieTube*`, m)
   let txt = await res.buffer()
   try {
     txt = util.format(JSON.parse(txt+''))

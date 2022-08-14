@@ -31,7 +31,7 @@ instagramdl(args[0]).then(async res => {
     let json = JSON.parse(instagramdl)
     for (let { url, type } of json) {
       await delay(1500)
-      conn.sendFile(m.chat, url, 'ig' + (type == 'image' ? '.jpg' : '.mp4'), 'Aine', m, { thumbnail: Buffer.alloc(0) })
+      conn.sendFile(m.chat, url, 'ig' + (type == 'image' ? '.jpg' : '.mp4'), 'ArieTube', m, { thumbnail: Buffer.alloc(0) })
     }
   })
 }
@@ -55,7 +55,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   let json = await res.json()
    if (!json.status) throw json
   m.reply('Sedang diproses...')
-   conn.sendFile(m.chat, json.linkdownload, 'ig.mp4', '*© Aine*', m, { thumbnail: Buffer.alloc(0) })
+   conn.sendFile(m.chat, json.linkdownload, 'ig.mp4', '*© ArieTube*', m, { thumbnail: Buffer.alloc(0) })
 }
 
 handler.help = ['ig'].map(v => v + ' <url>')
