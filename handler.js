@@ -284,10 +284,10 @@ module.exports = {
                     if (!isNumber(user.lastlatih)) user.lastlatih = 0
                 } else db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 1000,
+                    limit: 20,
                     joinlimit: 1,
-                    spammer: 0,
-                    limitspam: 0,
+                    spammer: 3,
+                    limitspam: 3,
                     money: 10000,
                     bank: 10000,
                     health: 100,
