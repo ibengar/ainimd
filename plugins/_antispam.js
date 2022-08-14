@@ -12,7 +12,7 @@ if (m.key.fromMe) return
         }
         this.spam[spaming.jid] = spaming
     } else try {
-        this.spam[m.sender].spam += 4
+        this.spam[m.sender].spam += 3
         if (new Date - this.spam[m.sender].lastspam > 3) {
             if (this.spam[m.sender].spam > 4) {
                 this.spam[m.sender].spam = 0
@@ -20,7 +20,7 @@ if (m.key.fromMe) return
                 //global.DATABASE._data.users[m.sender].banned = true
                 m.isGroup ? m.reply('*Jangan Spam!!*') : m.reply('*Kamu Terdeteksi Spam Bot\nMaka Bot Akan Blokir Nomor kamu!!*').then(v => conn.blockUser(m.chat))
             } else {
-                this.spam[m.sender].spam = 4
+                this.spam[m.sender].spam = 3
                 this.spam[m.sender].lastspam = new Date * 2
             }
         }
