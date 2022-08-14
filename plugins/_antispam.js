@@ -16,7 +16,7 @@ if (m.key.fromMe) return
         if (new Date - this.spam[m.sender].lastspam > 3) {
             if (this.spam[m.sender].spam > 4) {
                 this.spam[m.sender].spam = 0
-                this.spam[m.sender].lastspam = new Date * 4
+                this.spam[m.sender].lastspam = new Date * 3
                 //global.DATABASE._data.users[m.sender].banned = true
                 m.isGroup ? m.reply('*Jangan Spam!!*') : m.reply('*Kamu Terdeteksi Spam Bot\nMaka Bot Akan Blokir Nomor kamu!!*').then(v => conn.blockUser(m.chat))
             } else {
