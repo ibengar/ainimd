@@ -32,10 +32,10 @@ module.exports = {
                 if (typeof user !== 'object') db.data.users[m.sender] = {}
                 if (user) {
                     if (!isNumber(user.exp)) user.exp = 0
-                    if (!isNumber(user.limit)) user.limit = 1000
+                    if (!isNumber(user.limit)) user.limit = 20
                     if (!isNumber(user.joinlimit)) user.joinlimit = 1
-                    if (!isNumber(user.money)) user.money = 100000
-                    if (!isNumber(user.bank)) user.bank = 100000
+                    if (!isNumber(user.money)) user.money = 1000
+                    if (!isNumber(user.bank)) user.bank = 1000
                     if (!isNumber(user.lastclaim)) user.lastclaim = 0
                     if (!('registered' in user)) user.registered = false
                     if (!user.registered) {
@@ -255,6 +255,9 @@ module.exports = {
                     if (!isNumber(user.snlast)) user.snlast = 0
                     if (!isNumber(user.spinlast)) user.spinlast = 0
                     
+                    if (!isNumber(user.antispam)) user.antispam = 0
+                    if (!isNumber(user.antispamlastclaim)) user.antispamlastclaim = 0
+                    
                     if (!isNumber(user.lastwarpet)) user.lastwarpet = 0
                     if (!isNumber(user.lastpekerjaan)) user.lastpekerjaan = 0
                     if (!isNumber(user.lastclaim)) user.lastclaim = 0
@@ -286,10 +289,12 @@ module.exports = {
                     exp: 0,
                     limit: 20,
                     joinlimit: 1,
-                    spammer: 3,
-                    limitspam: 3,
-                    money: 10000,
-                    bank: 10000,
+                    spammer: 0,
+                    limitspam: 0,
+                    antispam: 0,
+                    antispamlastclaim: 0,
+                    money: 1000,
+                    bank: 1000,
                     health: 100,
                     tiketcoin: 0,
                     healtmonster: 100,
@@ -535,6 +540,7 @@ module.exports = {
                     if (!('welcome' in chat)) chat.welcome = false
                     if (!('detect' in chat)) chat.detect = false
                     if (!('sWelcome' in chat)) chat.sWelcome = ''
+                    if (!'antispam' in settings) settings.antispam = false
                     if (!('sBye' in chat)) chat.sBye = ''
                     if (!('sPromote' in chat)) chat.sPromote = ''
                     if (!('sDemote' in chat)) chat.sDemote = ''
@@ -551,6 +557,7 @@ module.exports = {
                     if (!isNumber(chat.expired)) chat.expired = 0
                 } else db.data.chats[m.chat] = {
                     isBanned: false,
+                    antispam: false,
                     welcome: false,
                     detect: false,
                     sWelcome: '',
@@ -822,7 +829,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                       // if (m.limit) m.reply(+ m.limit + ' Limit used')
+                        if (m.limit) m.reply(+ m.limit + ' Limit Terpakai')
                     }
                     break
                 }
