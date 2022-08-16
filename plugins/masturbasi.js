@@ -8,5 +8,5 @@ handler.command = /^(animesex)$/i
 handler.limit = 10
 handler.group = true
 handler.nsfw = true
-
+handler.premium = true
 module.exports = handler
