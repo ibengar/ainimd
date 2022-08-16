@@ -1,28 +1,16 @@
-
-
-const { MessageType } = require('@adiwajshing/baileys')
-
-let handler = async(m, { conn, text, usedPrefix, command}) => {
-    if (!text) return conn.reply(m.chat, `Silahkan masukan laporan kamu\n\nContoh: ${usedPrefix + command} Lapor pengguna mengirim foto bokep tolong di tindak.`, m)
-    if (text > 300) return conn.reply(m.chat, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', m)
-    var nomor = m.sender
-    const teks1 = `*[ REPORT ]*\nNomor : wa.me/${nomor.split("@s.whatsapp.net")[0]}\nPesan : ${text}`
-    conn.reply('62895330379186@s.whatsapp.net', teks1, m)
-    conn.reply(m.chat, '✔️ Masalah berhasil dikirimkan ke Owner', m)
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    if (!text) throw `kalo kamu nemu pesan eror, lapor pake perintah ini\n\ncontoh:\n${usedPrefix + command} selamat siang owner, sy menemukan eror seperti berikut <copy/tag pesan erornya>`
+    if (text.length < 10) throw `Laporan terlalu pendek, minimal 10 karakter!`
+    if (text.length > 1000) throw `Laporan terlalu panjang, maksimal 1000 karakter!`
+    let teks = `*${command.toUpperCase()}!*\n\nDari : *@${m.sender.split`@`[0]}*\n\nPesan : ${text}\n`
+    conn.reply(global.owner[0] + '@s.whatsapp.net', m.quoted ? teks + m.quoted.text : teks, null, {
+        contextInfo: {
+            mentionedJid: [m.sender]
+        }
+    })
+    m.reply(`_Pesan terkirim kepemilik bot, jika ${command.toLowerCase()} hanya main-main tidak akan ditanggapi._`)
 }
-handler.help = ['report <fitur>']
+handler.help = ['report', 'request'].map(v => v + ' <text>')
 handler.tags = ['info']
-handler.command = /^(report|lpr|lapor)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.limit = true
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-
+handler.command = /^(report|request)$/i
 module.exports = handler
