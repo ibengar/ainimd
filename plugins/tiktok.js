@@ -6,12 +6,12 @@ let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
     conn.sendFile(m.chat, video, '', `*${wm}*`, m)
     })
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.help = ['tiktok2'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 handler.limit = true
 handler.group = true
 
-handler.command = /^(tt|tiktok|tik)$/i
+handler.command = /^(tt2|tiktok2|tik2)$/i
 
 module.exports = handler
 
