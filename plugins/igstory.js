@@ -1,4 +1,4 @@
-/*let fetch = require('node-fetch')
+let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
   let res = await fetch(global.API('xteam', '/dl/igs', {
@@ -28,7 +28,7 @@ handler.tags = ['downloader']
 
 handler.command = /^(igs(tory)?)$/i
 
-module.exports = handler*/
+module.exports = handler
 
 
 
@@ -95,33 +95,7 @@ function igstory(username) {
             })
             .catch(reject)
     })
-}*/
-
-
-
-
-
-let axios = require('axios')
-let cheerio = require('cheerio')
-let fetch = require('node-fetch')
-
-let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-  if (!text) throw `*Perintah ini untuk mengunduh postingan instagram story*\n\nContoh:\n${usedPrefix + command} alinursetiawan24`
-  let res = await fetch(`https://megayaa.herokuapp.com/api/igstori?username=${text}`)
-   if (!res.ok) return m.reply('Error')
-   let json = await res.json()
-   if (!json.status) throw json
-    await m.reply('Sedang di proses..')
-    for (let { url, type } of json.data) {
-      await conn.delay(1500)
-      conn.sendFile(m.chat, url, 'ig' + (type == 'image' ? '.jpg' : '.mp4'), '', m)
-    }
 }
-handler.help = ['igstory'].map(v => v + ' <username>')
-handler.tags = ['downloader']
-handler.command = /^(igs(tory)?)$/i
-handler.limit = true
-handler.group = true
 
-module.exports = handler
+
 
