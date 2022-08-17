@@ -3,7 +3,7 @@ let supa = 'https://api.zacros.my.id/asupan/loli'
 conn.sendFile(m.chat, supa, null, 'Nih', m)
 }
 handler.help = ['asupanloli']
-handler.tags = ['asupan']
+handler.tags = ['premium']
 handler.command = /^(asupanloli)$/i
 
 module.exports = handler
