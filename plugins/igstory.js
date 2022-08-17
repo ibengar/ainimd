@@ -95,7 +95,7 @@ function igstory(username) {
             })
             .catch(reject)
     })
-}
+}*/
 
 
 
