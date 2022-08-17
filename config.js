@@ -19,7 +19,7 @@ APIs = { // API Prefix
   zeks: 'https://api.zeks.me',
   gimez: 'https://masgimenz.my.id/',
   melcanz: 'https://melcanz.com',
-  pencarikode: 'https://pencarikode.xyz',
+  betabotz: 'https://betabotz-api.herokuapp.com',
   LeysCoder: 'https://leyscoders-api.herokuapp.com',
   restapi: 'https://x-restapi.herokuapp.com'
 }
@@ -29,7 +29,7 @@ APIKeys = { // APIKey Here
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.neoxr.eu.org/': 'jVEMyB2ITJ',
   'https://api.zeks.me': 'apikeyaine',
-  'https://pencarikode.xyz': 'pais',
+  'https://betabotz-api.herokuapp.com': 'BetaBotz',
   'https://melcanz.com': 'ZZBk7EBb',
   'https://leyscoders-api.herokuapp.com': 'dappakntlll',
   'https://x-restapi.herokuapp.com': 'BETA'
