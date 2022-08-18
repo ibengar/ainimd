@@ -1,5 +1,5 @@
 let handler = async (m, { conn }) => {
-	conn.sendFile(m.chat, 'https://api.zacros.my.id/asupan/santuy', 'asupan.mp4', 'nih asupannya kak ', m)
+	conn.sendFile(m.chat, 'https://betabotz-api.herokuapp.com/api/asupan/santuy?apikey=BetaBotz', 'asupan.mp4', 'nih asupannya kak ', m)
 }
 handler.help = ['asupansantuy']
 handler.tags = ['premium']
