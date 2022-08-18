@@ -14,7 +14,7 @@ APIs = { // API Prefix
   nrtm: 'https://nurutomo.herokuapp.com',
   xteam: 'https://api.xteam.xyz',
   zahir: 'https://zahirr-web.herokuapp.com',
-  bcil: 'https://75.119.137.248:21587',
+  hanzz: 'https://hanzz-web.herokuapp.com',
   neoxr: 'https://api.neoxr.eu.org/',
   zeks: 'https://api.zeks.me',
   gimez: 'https://masgimenz.my.id/',
