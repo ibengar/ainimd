@@ -8,7 +8,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 `.trim(), m)
 }
 handler.help = ['lolirandom']
-handler.tags = ['anime']
+handler.tags = ['nsfw']
 handler.command = /^(lolirandom)$/i
 handler.limit = true
 handler.register = true
