@@ -287,6 +287,6 @@ ${usedPrefix}off welcome
 handler.help = ['on', 'off'].map(v => v + ' <opsi>')
 handler.tags = ['group', 'owner']
 handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i
-handler.premium = true
+handler.premium = false
 
 module.exports = handler
