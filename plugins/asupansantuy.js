@@ -5,7 +5,7 @@ handler.help = ['asupansantuy']
 handler.tags = ['premium']
 
 handler.command = /^(asupansantuy)$/i
-handler.premium = true
+handler.premium = false
 handler.register = true
 handler.limit = 5
 module.exports = handler
