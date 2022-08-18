@@ -1,5 +1,5 @@
 let handler = async(m,{text, conn}) => {
-let supa = 'https://api.zacros.my.id/asupan/ukhty'
+let supa = 'https://betabotz-api.herokuapp.com/api/asupan/ukhty?apikey=BetaBotz'
 conn.sendFile(m.chat, supa, null, 'Nih', m)
 }
 handler.help = ['asupanukhty']
