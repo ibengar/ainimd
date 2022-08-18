@@ -168,14 +168,14 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       }
       setting.antitroli = isEnable
       break
-      case 'toxic':
+      case 'antihidetag':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
           throw false
         }
       }
-      chat.antiToxic = !isEnable
+      chat.antihidetag = !isEnable
       break
     case 'autoread':
       isAll = true
@@ -264,7 +264,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       break
     default:
       if (!/[01]/.test(command)) throw `
-┌〔 Daftar Opsi 〕${isOwner ? '\n├ anon\n├ antispam\n├ antitroli\n├ autoread\n├ backup\n├ clear\n├ grouponly\n├ toxic\n├ nsfw\n├ public\n├ antisticker\n├ antivirtext\n├ antivirtex\n├ antibadword|- antidelete|- anticulik|- viewonce ' : ''}
+┌〔 Daftar Opsi 〕${isOwner ? '\n├ anon\n├ antispam\n├ antitroli\n├ autoread\n├ backup\n├ clear\n├ grouponly\n├ antihidetag\n├ nsfw\n├ public\n├ antisticker\n├ antivirtext\n├ antivirtex\n├ antibadword|- antidelete|- anticulik|- viewonce ' : ''}
 ├ antilink
 ├ autolevelup
 ├ delete
