@@ -244,9 +244,9 @@ const dir = [
 let handler = async (m, { conn }) => {
   conn.sendFile(m.chat, dir[Math.floor(Math.random() * dir.length)], 'asupan.mp4', '', m)
 }
-handler.help = ['asupanj']
+handler.help = ['asupan2']
 handler.tags = ['premium']
 handler.limit = 2
-handler.command = /^asupanj$/i
-handler.premium = true
+handler.command = /^asupan2$/i
+handler.premium = false
 module.exports = handler
