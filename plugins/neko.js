@@ -8,9 +8,9 @@ let handler = async(m, { conn }) => {
   if (!json.url) throw 'Error!'
   conn.sendFile(m.chat, json.url, '', 'Nyaa', m)
 }
-handler.help = ['neko']
-handler.tags = ['internet']
-handler.command = /^neko$/i
+handler.help = ['nekopoi']
+handler.tags = ['nsfw']
+handler.command = /^nekopoi$/i
 handler.limit = true
 
 module.exports = handler
