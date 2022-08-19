@@ -6,7 +6,7 @@ const {
 let handler = async (m, { conn, args, usedPrefix }) => {
 	if (!args[0]) return m.reply('Putting *URL* Facebook..')
     if (!args[0].includes("facebook")) return m.reply(`Url is wrong..\n\n*Example:*\n${usedPrefix}fb https://www.facebook.com/juankcortavarriaoficial/videos/218237676749570/`)
-	// let res = await fetch(`https://masgimenz.my.id/facebook/?url=` + args[0])
+	// let res = await fetch(`https://api.zacros.my.id/downloader/fbdl/?url=` + args[0])
 	let res = await fetch(`https://api.xteam.xyz/dl/fbv2?apikey=f9f2-4657-e43f&url=` + args[0])
 	//if (res.status !== 200) throw `Coba Lagi`
 	let json = await res.json()
@@ -37,8 +37,8 @@ const {
 let handler = async (m, { conn, args, usedPrefix }) => {
 	if (!args[0]) return m.reply('Putting *URL* Facebook..')
     if (!args[0].includes("facebook")) return m.reply(`Url is wrong..\n\n*Example:*\n${usedPrefix}fb https://www.facebook.com/juankcortavarriaoficial/videos/218237676749570/`)
-	let res = await fetch(`https://api.neoxr.my.id/api/fb?url=${args[0]}&apikey=NVW76G`)
-	if (res.status !== 200) throw `Coba Lagi`
+	let res = await fetch(`https://api.zacros.my.id/downloader/fbdl/?url=` + args[0]
+	//if (res.status !== 200) throw `Coba Lagi`
 	let json = await res.json()
 	//if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
 	let url = json.videoUrl
