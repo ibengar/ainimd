@@ -9,7 +9,7 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['husbu'].map(v => v + ' ')
 handler.tags = ['anime']
 
-handler.command = /^(pussy)$/i
+handler.command = /^(husbu)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = true
