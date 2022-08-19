@@ -3,7 +3,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   if (!args[0]) throw `uhm.. url nya mana?\n\ncontoh:\n${usedPrefix + command} https://www.facebook.com/alanwalkermusic/videos/277641643524720`
   if (/^https?:\/\/.*(fb.watch|facebook.com)/i.test(m.text)) throw `url salah`
 
-  let res = await fetch(API('neoxr', '/api/download/fb', { url: args[0] }, 'apikey'))
+  let res = await fetch(API('xteam', '/dl/fbv2', { url: args[0] }, 'apikey'))
   if (!res.ok) throw eror
   let json = await res.json()
   if (!json.status) throw json
