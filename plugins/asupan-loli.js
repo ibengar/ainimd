@@ -5,5 +5,5 @@ conn.sendFile(m.chat, supa, null, 'Nih', m)
 handler.help = ['asupanbocil']
 handler.tags = ['premium']
 handler.command = /^(asupanbocil)$/i
-
+handler.limit = true
 module.exports = handler
