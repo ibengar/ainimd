@@ -38,7 +38,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 	if (!args[0]) return m.reply('Putting *URL* Facebook..')
     if (!args[0].includes("facebook")) return m.reply(`Url is wrong..\n\n*Example:*\n${usedPrefix}fb https://www.facebook.com/juankcortavarriaoficial/videos/218237676749570/`)
 	let res = await fetch(`https://api.neoxr.my.id/api/fb?url=${args[0]}&apikey=NVW76G`)
-	//if (res.status !== 200) throw `Coba Lagi`
+	if (res.status !== 200) throw `Coba Lagi`
 	let json = await res.json()
 	//if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
 	let url = json.videoUrl
