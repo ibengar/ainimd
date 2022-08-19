@@ -1,37 +1,41 @@
 let moment = require('moment-timezone')
 let handler = m => m
 
-handler.all = async function (m) {
+handler.before = async function (m) {
 
-    if (m.chat.endsWith('broadcast')) return
+    if (m.chat.endsWith('broadcast') || m.key.remoteJid.endsWith('broadcast')) return
     if (m.fromMe) return
     if (m.isGroup) return
-    if (db.data.settings.groupOnly) return
+   // if (db.data.settings.groupOnly) return
     let user = global.db.data.users[m.sender]
-    if (new Date - user.pc < 43200000) return // setiap 12 jam
+    let { banned } = db.data.users[m.chat]
+    let username = conn.getName(m.sender) 
+    if (new Date - user.pc < 86400000) return // setiap 24 jam sekali
+ //   await conn.modifyChat(m.chat, 'mute', -Math.floor(new Date / 1e3) * 1e3 - 1e3).catch(console.log)
     await this.sendButton(m.chat, `
-Hai, ${ucapan()}
+Hai ${ucapan()} *${username.replace(/@.+/, '')}* 👋
 
-${user.banned ? 'kamu dibanned' : 'Ada yang bisa Shiraori bantu?'}
-`.trim(), '© Shiraori', user.banned ? 'PEMILIK Shiraori' : 'MENU', user.banned ? ',owner' : ',?')
+${banned ? `kamu *terbanned* kak 😕\nHubungi: wa.me/${owner[0]}` : 'Ada yang bisa saya bantu?'}
+`.trim(), wm, null, [['Menu', '/menu']], m)
     user.pc = new Date * 1
 }
 
 module.exports = handler
 function ucapan() {
-    const time = moment.tz('Asia/Jakarta').format('HH')
-    res = "Selamat dinihari"
-    if (time >= 4) {
-        res = "Selamat pagi"
-    }
-    if (time > 10) {
-        res = "Selamat siang"
-    }
-    if (time >= 15) {
-        res = "Selamat sore"
-    }
-    if (time >= 18) {
-        res = "Selamat malam"
-    }
-    return res
+        const hour_now = moment.tz('Asia/Jakarta').format('HH')
+        var ucapanWaktu = 'Pagi kak'
+        if (hour_now >= '03' && hour_now <= '10') {
+          ucapanWaktu = 'Pagi kak'
+        } else if (hour_now >= '10' && hour_now <= '15') {
+          ucapanWaktu = 'Siang kak'
+        } else if (hour_now >= '15' && hour_now <= '17') {
+          ucapanWaktu = 'Sore kak'
+        } else if (hour_now >= '17' && hour_now <= '18') {
+          ucapanWaktu = 'Selamat Petang kak'
+        } else if (hour_now >= '18' && hour_now <= '23') {
+          ucapanWaktu = 'Malam kak'
+        } else {
+          ucapanWaktu = 'Selamat Malam!'
+        }	
+        return ucapanWaktu
 }

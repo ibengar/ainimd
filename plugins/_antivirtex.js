@@ -1,24 +1,31 @@
+let fs = require('fs')
+let { MessageType } = require('@adiwajshing/baileys')
 let handler = m => m
 
-handler.before = function (m, { user, text }) {
+handler.all = async function (m, { isBlocked }) {
+    if (isBlocked) return
 
-  if (m.isBaileys && m.fromMe) return
-  let chat = global.DATABASE.data.chats[m.chat]
-  let name = this.getName(m.sender)
-
-  if (chat.antivirtex && text > 2500) {
-    this.reply(m.chat `
-*「 ANTI VIRTEX 」*
-
-Terdeteksi *${name}* telah mengirim virtex!
-
-Maaf Kamu akan dikick dari grup ini!
-`.trim(), m)
-
-    this.groupRemove(m.chat, [m.sender])
-  } else return false
+   let regs = /(ผิดุท้เึางืผิดุท้เึางื)/i
+   let isVertexThai = regs.exec(m.text)
+   if (isVertexThai && !m.fromMe) {
+   conn.groupParticipantsUpdate(m.chat, [m.sender], "remove")
+   }
+   
+   let regk = /(♚㜸ཽཽࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ͢͢㜺ࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣩࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧࣧ㜸ཽཽཽ͢͢͢♚)/i
+   let isVertexSymbol = regk.exec(m.text)
+   if (isVertexSymbol && !m.fromMe) {
+   conn.groupParticipantsUpdate(m.chat, [m.sender], "remove")
+   }
+   
+   let regp = /(๒๒)/i
+   let isVertexsThai= regp.exec(m.text)
+   if (isVertexsThai && !m.fromMe) {
+   conn.groupParticipantsUpdate(m.chat, [m.sender], "remove")
+   }
+   
+   // tambahin sendiri code virus WhatsApp..
 }
-handler.group = true
-handler.register = true
 
+handler.botAdmin = true
+handler.group = true
 module.exports = handler
