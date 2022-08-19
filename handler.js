@@ -574,10 +574,12 @@ module.exports = {
                 if (settings) {
 		            if (!'anticall' in settings) settings.anticall = true
 		            if (!'autoreset' in settings) settings.autoreset = true
+		            if (!'antispam' in settings) settings.antispam = true
 		            if (!isNumber(settings.autoresetTime)) settings.autoresetTime = (new Date() * 1) + 3600000 * 720
 		        } else db.data.settings[this.user.jid] = {
 		            anticall: true,
 		            autoreset: true,
+		            antispam: true
 		            autoresetTime: (new Date() * 1) + 3600000 * 720,
 		        }
             } catch (e) {
