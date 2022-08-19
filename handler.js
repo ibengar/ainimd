@@ -284,7 +284,7 @@ module.exports = {
                     if (!isNumber(user.lastlatih)) user.lastlatih = 0
                 } else db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 30,
+                    limit: 50,
                     joinlimit: 1,
                     spammer: 0,
                     limitspam: 0,
@@ -546,7 +546,6 @@ module.exports = {
                     if (!('mute' in chat)) chat.mute = true 
                     if (!('download' in chat)) chat.download = false 
                     if (!('viewonce' in chat)) chat.viewonce = false
-                     if (!'antispam' in settings) settings.antispam = false
                     if (!('useDocument' in chat)) chat.useDocument = false
                     if (!('antiToxic' in chat)) chat.antiToxic = false
                     if (!isNumber(chat.expired)) chat.expired = 0
@@ -556,7 +555,6 @@ module.exports = {
                     detect: false,
                     sWelcome: '',
                     sBye: '',
-                    antispam: ",
                     sPromote: '',
                     sDemote: '',
                     delete: true,
