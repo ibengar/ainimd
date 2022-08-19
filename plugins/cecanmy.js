@@ -6,10 +6,10 @@ let handler = async (m, { conn, args }) => {
   let res = `https://betabotz-api.herokuapp.com/api/cecan/malaysia?apikey=BetaBotz`
   conn.sendFile(m.chat, res, 'bdsm.jpg', `wangy wangy wangy`, m, false)
 }
-handler.help = ['cecanjapan'].map(v => v + ' ')
+handler.help = ['cecanmy'].map(v => v + ' ')
 handler.tags = ['premium']
 
-handler.command = /^(cecanjapan)$/i
+handler.command = /^(cecanmy)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
