@@ -3,8 +3,8 @@ let handler = async (m, { conn, args }) => {
    response = args.join(' ')
   if (!args) throw 'Masukkan Parameter'
   m.reply('Sedang Diproses...')
-  let res = `https://hardianto.xyz/api/anime/random?nsfw=hentai&apikey=hardianto`
-  conn.sendFile(m.chat, res, 'hentai.jpg', `Emak lu nih`, m, false)
+  let res = `https://betabotz-api.herokuapp.com/api/nsfw/hentai?apikey=BetaBotz`
+  conn.sendFile(m.chat, res, 'mstrb.jpg', `wangy wangy wangy`, m, false)
 }
 handler.help = ['hentai'].map(v => v + ' ')
 handler.tags = ['nsfw']
