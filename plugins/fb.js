@@ -29,7 +29,7 @@ handler.premium = false
 module.exports = handler
 
 
-*/let fetch = require('node-fetch')
+/*let fetch = require('node-fetch')
 const {
     MessageType
 } = require('@adiwajshing/baileys')
