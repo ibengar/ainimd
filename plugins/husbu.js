@@ -3,11 +3,11 @@ let handler = async (m, { conn, args }) => {
    response = args.join(' ')
   if (!args) throw 'Masukkan Parameter'
   m.reply('Sedang Diproses...')
-  let res = `https://hardianto.xyz/api/anime/random?nsfw=pussy&apikey=hardianto`
-  conn.sendFile(m.chat, res, 'pussy.jpg', `wangy wangy wangy`, m, false)
+  let res = `https://hanzz-web.herokuapp.com/api/randomimage/husbu`
+  conn.sendFile(m.chat, res, 'husbu.jpg', `yah ada wibu`, m, false)
 }
-handler.help = ['pussy'].map(v => v + ' ')
-handler.tags = ['nsfw']
+handler.help = ['husbu'].map(v => v + ' ')
+handler.tags = ['anime']
 
 handler.command = /^(pussy)$/i
 handler.owner = false
