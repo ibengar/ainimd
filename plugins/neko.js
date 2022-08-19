@@ -9,7 +9,7 @@ let handler = async(m, { conn }) => {
   conn.sendFile(m.chat, json.url, '', 'Nyaa', m)
 }
 handler.help = ['nekopoi']
-handler.tags = ['nsfw']
+handler.tags = ['anime']
 handler.command = /^nekopoi$/i
 handler.limit = true
 
