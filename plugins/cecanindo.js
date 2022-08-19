@@ -1,10 +1,26 @@
-let handler = async (m, { conn }) => {
-    conn.sendButtonImg(m.chat, ('https://betabotz-api.herokuapp.com/api/wallpaper/islami?apikey=BetaBotz'), 'Nih Jgn lupa add fb gw https://facebook.com/ribeng2', wm, 'NEXT', '.cecanindo', m)
+let fetch = require('node-fetch')
+let handler = async (m, { conn, args }) => {
+   response = args.join(' ')
+  if (!args) throw 'Masukkan Parameter'
+  m.reply('Sedang Diproses...')
+  let res = `https://betabotz-api.herokuapp.com/api/cecan/indonesia?apikey=BetaBotz`
+  conn.sendFile(m.chat, res, 'bdsm.jpg', `wangy wangy wangy`, m, false)
 }
-
-handler.help = ['imageislam']
+handler.help = ['cecanindo'].map(v => v + ' ')
 handler.tags = ['premium']
-handler.command = /^(imageislam)$/i
-handler.limit = 3
+
+handler.command = /^(cecanindo)$/i
+handler.owner = false
+handler.mods = false
+handler.premium = true
+handler.group = false
+handler.private = false
+
+handler.admin = false
+handler.botAdmin = false
+
+handler.fail = null
+handler.limit = 1
+
 module.exports = handler
 
