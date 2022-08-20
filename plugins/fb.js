@@ -1,17 +1,39 @@
-let axios = require('axios');
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0].includes("facebook")) return m.reply(`Url is wrong..\n\n*Example:*\n${usedPrefix}fb https://www.facebook.com/juankcortavarriaoficial/videos/218237676749570/`)
-    let res = (await axios.get(API('xteam', '/dl/fbv2', { url: args[0] } ))).data;
-    if (res.status != 200) throw res.message;
-    if (!res) throw res.message;
-    conn.sendFile(m.chat, url, 'fb.mp4', author, m)
-
+let fetch = require('node-fetch')
+let handler = async (m, { conn, args }) => {
+  if (!args[0]) throw 'Uhm...url nya mana?'
+  let res = await fetch(global.API('xteam', '/dl/fb', {
+    url: args[0]
+  }, 'APIKEY'))
+  if (res.status !== 200) throw await res.text()
+  let json = await res.json()
+  if (!json.status) throw json
+  /*let url = json.server_1 || json.info[0].videoUrl || ''
+  if (!url) throw 'Gagal mengambil url download'
+  let txt = json.info[0].text
+  for (let hashtag of json.info[0].hashtags) txt = txt.replace(hashtag, '*$&*')
+  await conn.sendFile(m.chat, url, 'tiktok.mp4', `
+▶ ${json.info[0].playCount} Views
+❤ ${json.info[0].diggCount} Likes
+🔁 ${json.info[0].shareCount} Shares
+💬 ${json.info[0].commentCount} Comments
+🎵 ${json.info[0].musicMeta.musicName} by ${json.info[0].musicMeta.musicAuthor}
+- *By:* ${json.info[0].authorMeta.nickName} (${json.info[0].authorMeta.name})
+- *Desc:*
+${txt}
+  `.trim(), m)*/
+  let url = json.result.link_dl1 || json.result.link_dl2 || ''
+  if (!url) throw 'Gagal mengambil url download'
+  let txt = `
+  - *By:* ${json.result.name}
+  - *Caption:*
+  ${json.result.caption}
+    `
+    await conn.sendFile(m.chat, url, 'tiktok.mp4', txt.trim(), m)
 }
-
-handler.help = ['fb'].map(v => v + ' <url>')
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(fb)?(dl)?)$/i
 
-handler.limit = 1
+handler.command = /^(tik(tok)?(dl)?)$/i
+handler.limit = true
 
 module.exports = handler
