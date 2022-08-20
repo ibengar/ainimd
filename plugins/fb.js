@@ -1,67 +1,84 @@
-/*const fetch = require('node-fetch')
+import { facebookdl, facebookdlv2 } from '@bochilteam/scraper'
+import fetch from 'node-fetch'
+import { savefrom } from '@bochilteam/scraper'
+import cheerio from 'cheerio'
+
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-  if (!args[0]) throw `Masukkan URL Facebook yang ingin di download!\n\nContoh:${usedPrefix + command} https://www.facebook.com/alanwalkermusic/videos/277641643524720`
-  if (/^https?:\/\/.*(fb.watch|facebook.com)/i.test(m.text)) throw `url salah`
+try {
+    if (!args[0]) throw `Use example ${usedPrefix}${command} https://fb.watch/azFEBmFRcy/`
+    // let { result } = await facebookdl(args[0])
+    if (!args[1]) return conn.sendButton(m.chat, `*${htki} ғᴀᴄᴇʙᴏᴏᴋ ${htka}*`, null, null, [['sᴅ', `.fb ${args[0]} sd`],['ʜᴅ', `.fb ${args[0]} hd`]],m)
+   let res = await fetch(`https://api.xteam.xyz/dl/fbv2?url=${args[0]}&APIKEY=NezukoTachibana281207`)
+    let { result } = await res.json()
+    
+    let { hd, meta, sd } = result
+    
+    let tpe = "sd"
+  if (args[1] == 'sd') {
+    tpe = sd
+  }
+  if (args[1] == 'hd') {
+    tpe = hd
+  }
+  let { url } = tpe
+  let { duration } = meta
+  let { thumb } = result
 
-  let res = await fetch(API('neoxr', '/dl/fb', { url: args[0] }, 'apikey'))
-  if (!res.ok) throw eror
-  let json = await res.json()
-  if (!json.status) throw json
-  await m.reply(wait)
-  await conn.sendFile(m.chat, json.data.sd.url, '', `HD: ${json.data.hd.url}\nUkuran: ${json.data.hd.size}\n\n${watermark}`, m)
+conn.reply(m.chat, `ᴅ ᴏ ᴡ ɴ ʟ ᴏ ᴀ ᴅ ɪ ɴ ɢ. . .`, 0, {
+  contextInfo: { mentionedJid: [m.sender],
+    externalAdReply :{
+    mediaUrl: 'https://facebook.com',
+    mediaType: 2,
+    description: wm, 
+    title: '               「🇫」 ғ ᴀ ᴄ ᴇ ʙ ᴏ ᴏ ᴋ',
+    body: wm,
+    thumbnail: await(await fetch(thumb)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
+  conn.sendHydrated(m.chat, ' ', `
+━━━━━•─────────────── ${duration}
+       ⇆ㅤ◁ㅤ ❚❚ㅤ ▷ㅤ↻`, await (await fetch(url)).buffer(), args[0], '🌎 ᴜ ʀ ʟ', null,null, [[null,null],[null,null],[null,null]],m)
+       } catch {
+       if (!args[0]) throw 'Input URL'
+	let res = await facebookDl(args[0]).catch(async _ => await savefrom(args[0])).catch(_ => null)
+	if (!res) throw 'Can\'t download the post'
+	let url = res?.url?.[0]?.url || res?.url?.[1]?.url || res?.['720p'] || res?.['360p']
+	await m.reply('_In progress, please wait..._')
+	conn.sendMessage(m.chat, { video: { url }, caption: res?.meta?.title || '' }, { quoted: m })
 }
-handler.help = ['fb'].map(v => v + ' <url>')
+       
+}
+handler.help = ['facebbok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 
-handler.command = /^f((b|acebook)(dl|download)?(er)?)$/i
+handler.command = /^((facebook|fb)(downloder|dl)?)$/i
 
-handler.limit = true
+export default handler
 
-module.exports = handler*/
-let fetch = require('node-fetch')
+/*async function facebookDl(url) {
+	let res = await fetch('https://fdownloader.net/')
+	let $ = cheerio.load(await res.text())
+	let token = $('input[name="__RequestVerificationToken"]').attr('value')
+	let json = await (await fetch('https://fdownloader.net/api/ajaxSearch', {
+		method: 'post',
+		headers: {
+			cookie: res.headers.get('set-cookie'),
+			'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+			referer: 'https://fdownloader.net/'
+		},
+		body: new URLSearchParams(Object.entries({ __RequestVerificationToken: token, q: url }))
+	})).json()
+	let $$ = cheerio.load(json.data)
+	let result = {}
+	$$('.button.is-success.is-small.download-link-fb').each(function () {
+		let quality = $$(this).attr('title').split(' ')[1]
+		let link = $$(this).attr('href')
+		if (link) result[quality] = link
+	})
+	return result
+}*/
 
-let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Uhm...url nya mana?'
-  let res = await fetch(global.API('xteam', '/dl/fb', { url: args[0] }, 'apikey'))
-  if (res.status !== 200) {
-    res.text()
-    throw res.status
-  }
-  let json = await res.json()
-  if (!json.result) throw json
-  let { name, author, description, uploadDate, duration, url, isFamilyFriendly, genre, keywords, contentSize, videoQuality, commentCount } = json.result
-  let { name: authorname, url: authorlink } = author || {}
-  let dateConfig = {
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  }
-  let unknown = '_Unknown_'
-  let none = '_None_'
-  let caption = `
-Konten${isFamilyFriendly ? ' ' : ' *Tidak* '}Family Friendly
-Post oleh ${name} (${authorname || ''}) (${authorlink || ''})
-Diposting pada ${new Date(uploadDate).toLocaleDateString('id', dateConfig)}
-Size: ${contentSize || unknown}
-Durasi: ${clockString(+ new Date(duration))}
-Genre: ${genre || none}
-Kualitas: ${videoQuality ? videoQuality : unknown}
-
-${description}
-
-Keyword: ${keywords || none}
-`.trim()
-  conn.sendFile(m.chat, url, 'media-fb', caption, m)
-}
-handler.help = ['fb'].map(v => v + ' <url>')
-handler.tags = ['downloader']
-
-handler.command = /^f((b|acebook)(dl|download)?(er)?)$/i
-
-module.exports = handler
 
 function clockString(ms) {
   let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
