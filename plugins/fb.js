@@ -40,12 +40,12 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 	let res = await fetch(`https://api.xteam.xyz/dl/fb?url=${args[0]}&APIKEY=NezukoTachibana281207`)
 	if (res.status !== 200) throw `Coba Lagi`
 	let json = await res.json()
-	//if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
+	if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
 	let url = json.videoUrl
 	m.reply('Sedang diproses...')
-	if (url) await conn.sendFile(m.chat, url, 'fb.mp4', wm, m)
-	//if (url) await conn.sendMessage(m.chat, url, MessageType.video, {mimetype: 'video/mp4', quoted: m, caption: wm})
-	else m.reply('Link download tidak ditemukan')
+	//if (url) await conn.sendFile(m.chat, url, 'fb.mp4', wm, m)
+	if (url) await conn.sendMessage(m.chat, url, MessageType.video, {mimetype: 'video/mp4', quoted: m, caption: wm})
+	//else m.reply('Link download tidak ditemukan')
 	}
 
 handler.help = ['fb'].map(v => v + ' <url>')
