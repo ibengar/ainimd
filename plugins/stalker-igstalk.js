@@ -19,7 +19,7 @@ Contoh: ${usedPrefix}${command} jokowi
   conn.sendFile(m.chat, json.profilePicHD, 'error.jpg', iggs, m)
 }
 handler.help = ['igstalk <username>']
-handler.tags = ['stalk']
+handler.tags = ['downloader']
 handler.command = /^(igstalk)$/i
 handler.limit = true
 
