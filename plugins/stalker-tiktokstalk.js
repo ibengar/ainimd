@@ -22,7 +22,7 @@ let handler = async(m, { conn, text }) => {
     conn.sendFile(m.chat, thumb, 'tiktokstalk.jpg', hasil, m)
 }
 handler.help = ['tiktokstalk'].map(v => v + ' <username>')
-handler.tags = ['stalk']
+handler.tags = ['downloader']
 handler.command = /^(tiktokstalk)$/i
 
 module.exports = handler
