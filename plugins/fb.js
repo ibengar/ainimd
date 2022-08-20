@@ -22,12 +22,12 @@ let handler = async (m, { conn, args }) => {
   let unknown = '_Unknown_'
   let none = '_None_'
   let caption = `
-Konten${isFamilyFriendly ? ' ' : ' *Tidak* '}Family Friendly
-Post oleh ${name} (${authorname || ''}) (${authorlink || ''})
+//Konten${isFamilyFriendly ? ' ' : ' *Tidak* '}Family Friendly
+//Post oleh ${name} (${authorname || ''}) (${authorlink || ''})
 Diposting pada ${new Date(uploadDate).toLocaleDateString('id', dateConfig)}
 Size: ${contentSize || unknown}
 Durasi: ${clockString(+ new Date(duration))}
-Genre: ${genre || none}
+//Genre: ${genre || none}
 Kualitas: ${videoQuality ? videoQuality : unknown}
 
 ${description}
