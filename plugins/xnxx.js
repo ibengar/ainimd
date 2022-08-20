@@ -1,4 +1,4 @@
-let fetch = require('node-fetch')
+/*let fetch = require('node-fetch')
 let handler = async(m, { conn, text }) => {
     if (!text) throw `Harap masukan judulnya\n\n\nContoh : .xnxxsearch segs brutal`
     let res = await fetch(`https://api.zacros.my.id/nsfw/xnxx-search?query=${text}`)
@@ -14,4 +14,4 @@ handler.command = /^(xnxxsearch)$/i
 handler.premium = true
 handler.limit = 6
 
-module.exports = handler
+module.exports = handler*/
