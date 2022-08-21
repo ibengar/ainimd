@@ -1,12 +1,6 @@
-/*
- * Hyzer Baik :) 
- * Wkwkk Ini Cuman Buat Pelengkap Doang
- * Bukan Bagian Dari Fitur Deck
- * Sumimasen >,<
-*/
-
-//----------[ FAKE TOKO ]--------//
-const ftoko = {
+let fs = require("fs")
+let handler = async(m, { conn, args, text, usedPrefix: _p }) => {
+ const ftoko = {
 key: {
 			fromMe: false,
 			participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "0@s.whatsapp.net" } : {})
@@ -16,10 +10,10 @@ key: {
 				"product": {
 					"productImage":{
 						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync('./media/siang.jpg') //Gambarnye
+						"jpegThumbnail": fs.readFileSync(`./src/profil.jpg`) //Gambarnye
 					},
-					"title": "MikeBot", //Kasih namalu 
-					"description": "SELF BOT", 
+					"title": "tokonya bang", //Kasih namalu 
+					"description": "iBeng BOT", 
 					"currencyCode": "USD",
 					"priceAmount1000": "2000",
 					"retailerId": "Ghost",
@@ -29,7 +23,7 @@ key: {
 		}
 	}
 }
-//----------[ FAKE TROLI ]--------//
+//FAKEREPLY TROLI
 const ftroli = {
 	key : {
                           participant : '0@s.whatsapp.net'
@@ -39,15 +33,15 @@ const ftroli = {
                             itemCount : 1,
                             status: 1,
                             surface : 1,
-                            message: 'MikeBot', //Kasih namalu
+                            message: 'anjay', //Kasih namalu
                             orderTitle: 'Bang',
-                            thumbnail: fs.readFileSync('./media/siang.jpg'), //Gambarnye
+                            thumbnail: fs.readFileSync('./src/profil.jpg'), //Gambarnye
                             sellerJid: '0@s.whatsapp.net'
           
                           }
                         }
                       }
-//----------[ FAKE LOKASI ]--------//
+//FAKEREPLY LOCATION
 const flokasi = {
 	key : {
            participant : '0@s.whatsapp.net'
@@ -55,7 +49,7 @@ const flokasi = {
        message: {
                     locationMessage: {
                     name: 'Russia',
-                    jpegThumbnail: fs.readFileSync('./media/siang.jpg')
+                    jpegThumbnail: fs.readFileSync('./src/profil.jpg')
                           }
                         }
                       }
@@ -65,7 +59,7 @@ const floc = {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "locationMessage": { "title":"jakarta","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')}}
+	 message: { "locationMessage": { "title":"jakarta","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')}}
 	}
 	
 const fliveLoc = {
@@ -73,14 +67,14 @@ const fliveLoc = {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat  ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "liveLocationMessage": { "caption":"ANTIBOT","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')}}
+	 message: { "liveLocationMessage": { "caption":"ANTIBOT","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')}}
 	}
 	const fliveLoc2 = {
 	 key:
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "liveLocationMessage": { "title": "ANTIBOT","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')}}
+	 message: { "liveLocationMessage": { "title": "ANTIBOT","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')}}
 	}
 //FAKEREPLY KONTAK
  const fcon = {
@@ -88,7 +82,7 @@ const fliveLoc = {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "contactMessage": { "title":"sri","h": `haloo`, 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')}}
+	 message: { "contactMessage": { "title":"sri","h": `haloo`, 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')}}
 	}
 	
 	const fcona = {
@@ -96,11 +90,10 @@ const fliveLoc = {
 	 { fromMe: false,
 	 participant: `0@s.whatsapp.net`, ...(m.chat ? 
 	 { remoteJid: "status@broadcast" } : {}) },
-	 message: { "contactsArrayMessage": { "title":"antibot","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')}}
+	 message: { "contactsArrayMessage": { "title":"antibot","h": `aloo`, 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')}}
 	}
 	const bugcon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "contactMessage": { "vcard": ""}}}
-	
-//----------[ FAKE DOC ]--------//
+//FAKEREPLY DOCUMENT
 const fdocs = {
 	key : {
            participant : '0@s.whatsapp.net'
@@ -108,11 +101,11 @@ const fdocs = {
        message: {
                     documentMessage: {
                     title: 'Halo bang', 
-                    jpegThumbnail: fs.readFileSync('./media/siang.jpg')
+                    jpegThumbnail: fs.readFileSync('./src/profil.jpg')
                           }
                         }
                       }
-//----------[ FAKE VIDEO ]--------//
+//FAKEREPLY VIDEO
 const fvideo = {
 	 key: { 
           fromMe: false,
@@ -125,11 +118,11 @@ const fvideo = {
                  "h": `Hmm`,
                  'seconds': '99999', 
                  'caption': 'Halo bang',
-                 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')
+                 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')
                         }
                        }
 	                  }
-//----------[ FAKE GC ]--------//
+//FAKEREPLY GROUPINVITE
 const fgclink = {
 	"key": {
 		"fromMe": false,
@@ -142,11 +135,11 @@ const fgclink = {
 			"inviteCode": "mememteeeekkeke",
 			"groupName": "Mengter", 
             "caption": "Halo bang jagoo", 
-            'jpegThumbnail': fs.readFileSync('./media/siang.jpg')
+            'jpegThumbnail': fs.readFileSync('./src/profil.jpg')
 		}
 	}
 }
-//----------[ FAKE GIF  ]--------//
+//FAKEREPLY GIF
 const fgif = {
 	 key: { 
           fromMe: false,
@@ -160,11 +153,11 @@ const fgif = {
                  'seconds': '99999', 
                  'gifPlayback': 'true', 
                  'caption': 'Halo bang',
-                 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')
+                 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')
                         }
                        }
 	                  } 
-//----------[ FAKE TEXT  ]--------//
+//FAKEREPLY TEXT WITH THUMBNAIL
 const ftextt = {
 	 key: { 
           fromMe: false,
@@ -175,11 +168,11 @@ const ftextt = {
 		"extendedTextMessage": {
                  "text":"hallo bang",
                  "title": `Hmm`,
-                 'jpegThumbnail': fs.readFileSync('./media/siang.jpg')
+                 'jpegThumbnail': fs.readFileSync('./src/profil.jpg')
                         }
 	                  } 
                      }
-//----------[ FAKE VN  ]--------//
+//FAKEREPLY VN
 const fvn = {
 	 key: { 
           fromMe: false,
@@ -188,9 +181,19 @@ const fvn = {
                 },
 	 message: { 
 		"audioMessage": {
-                 "mimetype":"audio/ogg; codecs=opus",
+                 "mimetype":"lib/ogg; codecs=opus",
                  "seconds": "${second}",
                  "ptt": "true"
                         }
 	                  } 
                      }
+                     let tes = await conn.sendMessage(m.chat, `ini bwang`, 'conversation', { sendEphemeral: true, quoted: fvn })
+      setTimeout(() => {
+        conn.deleteMessage(m.chat, tes.key)
+      }, 3000)
+
+}
+handler.command = /^(tesfake)$/i
+
+module.exports = handler
+
