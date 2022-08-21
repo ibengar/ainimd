@@ -18,7 +18,7 @@ let handler = function (m) {
 
 handler.help = ['del', 'delete']
 handler.tags = ['tools']
-handler.premium = true
+handler.limit = 5
 handler.command = /^(d(el(ete)?)?)$/i
 
 module.exports = handler
