@@ -35,7 +35,7 @@ let tags = {
 }
 const defaultMenu = {
   before:`
-┌─「 *${global.namebot}* 」
+┌─「 *iBeng-BOTZZ* 」
 ├ Hai, %name!
 ├ Tersisa *%limit Limit*
 ├ Role *%role*
