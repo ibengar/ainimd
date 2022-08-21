@@ -13,7 +13,7 @@ if (m.key.fromMe) return
         this.spam[spaming.jid] = spaming
     } else try {
         this.spam[m.sender].spam += 1
-        if (new Date - this.spam[m.sender].lastspam > 3) {
+        if (new Date - this.spam[m.sender].lastspam > 2) {
             if (this.spam[m.sender].spam > 1) {
                 this.spam[m.sender].spam = 0
                 this.spam[m.sender].lastspam = new Date * 1
