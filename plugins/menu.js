@@ -34,25 +34,28 @@ let tags = {
   'maker': 'Maker',
 }
 const defaultMenu = {
-  before: `
-Hai, %ucapan %name! 👋
-  
-*Waktu:* 
-%wib WIB
-%wita WITA
-%wit WIT
-*Hari:* %week
-*Tanggal:* %date
-*Uptime:* %uptime (%muptime)
-
-*Limit:* %limit
-*Level:* %level
-*XP:* %exp
-%readmore`.trimStart(),
-  header: ' *%category*',
-  body: ' • %cmd %islimit %isPremium',
-  footer: '\n',
-  after: `*Made by iBeng Official*
+  before:`
+┌─「 *${global.namebot}* 」
+├ Hai, %name!
+├ Tersisa *%limit Limit*
+├ Role *%role*
+├ Level *%level (%exp / %maxexp)*
+├ [%xp4levelup]
+├ %totalexp XP secara Total
+│ 
+├ Tanggal: *%week %weton, %date*
+├ Tanggal Islam: *%dateIslamic*
+├ Waktu: *%time*
+│
+├ Uptime: *%uptime (%muptime)*
+├ Database: %rtotalreg dari %totalreg
+├ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
+└────
+%readmore`.trimStart(), 
+  header: '┌─「 %category 」',
+  body: '├ %cmd %islimit %isPremium',
+  footer: '└────\n', 
+  after: `*Made by iBeng Official*  `,
 *%npmname* | %version
 ${'```%npmdesc```'}
 `,
