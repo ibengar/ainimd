@@ -2,6 +2,7 @@ let cp = require('child_process')
 let { promisify } = require('util')
 let exec = promisify(cp.exec).bind(cp)
 let handler = async (m) => {
+	await conn.reply(m.chat, wait, m)
     let o
     try {
         o = await exec('python speed.py')
@@ -15,6 +16,6 @@ let handler = async (m) => {
 }
 handler.help = ['speedtest']
 handler.tags = ['info']
-handler.command = /^(speedtest)$/i
+handler.command = /^(speedtest?|test?speed)$/i
 
 module.exports = handler
