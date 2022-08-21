@@ -55,7 +55,7 @@ const defaultMenu = {
   header: '┌─「 %category 」',
   body: '├ %cmd %islimit %isPremium',
   footer: '└────\n', 
-  after: `*Made by iBeng Official*`,
+  after: `*Made by iBeng Official*
 *%npmname* | %version
 ${'```%npmdesc```'}
 `,
