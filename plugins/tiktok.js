@@ -1,29 +1,17 @@
-let fetch = require('node-fetch')
-let axios = require('axios')
-let handler = async (m, { conn, args }) => {
-  if (!args[0]) throw 'Uhm...url nya mana?'
-let res = await fetch(API('betabotz', '/api/download/tiktok', { url: args[0] }, 'apikey'))
-    let json = await res.json()
-    
-    m.reply(data.wait)
-await conn.reply(m.chat, `Downloading media from Tiktok`, 0, {
-  contextInfo: { mentionedJid: [m.sender],
-    externalAdReply :{
-    mediaUrl: data.sc,
-    mediaType: 2,
-    description: data.deslink , 
-    title: run,
-    body: wm,
-    thumbnail: await(await fetch(img)).buffer(),
-    sourceUrl: data.sc
-     }}
-  })
-let txt = `ðŸš€ *Link:* ${await(await axios.get(`https://tinyurl.com/api-create.php?url=${args[0]}`)).data}` 
-    await conn.sendButtonVid(m.chat, json.result.link, txt, wm, `Audio`, `.tiktokaudio ${args[0]}`, m)
+const { tiktokdl } = require('@bochilteam/scraper')
+let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
+	if (!args[0]) throw `Link tiktoknya mana?\n\ncontoh:\n${usedPrefix}${command} https://vm.tiktok.com/ZGJAmhSrp/`
+    tiktokdl(args[0]).then(r => {
+    let video = r.video.no_watermark
+    conn.sendFile(m.chat, video, '', `*${wm}*`, m)
+    })
 }
-handler.help = ['tiktoknowm'].map(v => v + ' <url>')
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tt|tiktok)nowm(dl)?(download(er)?)?$/i
+handler.limit = true
+handler.group = true
 
+handler.command = /^(tt|tiktok|tik)$/i
 
 module.exports = handler
+
