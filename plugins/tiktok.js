@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
   let res = await fetch(API('betabotz', '/api/download/tiktok', { url: args[0] }, 'apikey'))
-  if (res.status !== 200) throw await res.text()
+  //if (res.status !== 200) throw await res.text()
   let json = await res.json()
   if (!json.status) throw json
   /*let url = json.server_1 || json.info[0].videoUrl || ''
