@@ -1,39 +1,54 @@
-let fetch = require('node-fetch')
-let handler = async (m, { conn, args }) => {
+let { getVideoMeta } = require('tiktok-scraper')
+let moment = require('moment-timezone')
+let handler = async (m, { conn, args, isPrems }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
-  let res = await fetch(global.API('xteam', '/dl/tiktok', {
-    url: args[0]
-  }, 'APIKEY'))
-  if (res.status !== 200) throw await res.text()
-  let json = await res.json()
-  if (!json.status) throw json
-  /*let url = json.server_1 || json.info[0].videoUrl || ''
-  if (!url) throw 'Gagal mengambil url download'
-  let txt = json.info[0].text
-  for (let hashtag of json.info[0].hashtags) txt = txt.replace(hashtag, '*$&*')
-  await conn.sendFile(m.chat, url, 'tiktok.mp4', `
-▶ ${json.info[0].playCount} Views
-❤ ${json.info[0].diggCount} Likes
-🔁 ${json.info[0].shareCount} Shares
-💬 ${json.info[0].commentCount} Comments
-🎵 ${json.info[0].musicMeta.musicName} by ${json.info[0].musicMeta.musicAuthor}
-- *By:* ${json.info[0].authorMeta.nickName} (${json.info[0].authorMeta.name})
-- *Desc:*
-${txt}
-  `.trim(), m)*/
-  let url = json.result.link_dl1 || json.result.link_dl2 || ''
-  if (!url) throw 'Gagal mengambil url download'
-  let txt = `
-  - *By:* ${json.result.name}
-  - *Caption:*
-  ${json.result.caption}
-    `
-    await conn.sendFile(m.chat, url, 'tiktok.mp4', txt.trim(), m)
+  m.reply('Downloading....')
+  let { nowm: nowatermark, video: watermark, audio, preview } = (await require('../lib/musicaldown')(args[0]))
+     try {
+  let { diggCount, text, playCount, commentCount, shareCount, createTime, authorMeta } = (await getVideoMeta(args[0])).collector[0]
+  let { name, nickName } = authorMeta
+  m.reply('Uploading....')
+  let caption = (`「  𝐓𝐈𝐊𝐓𝐎𝐊 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 」
+
+- Name : ${nickName}
+- Username : ${name}
+- Likes : ${h2k(diggCount)} 
+- Viewers : ${h2k(playCount)} 
+- Comment : ${h2k(commentCount)} 
+- Share : ${h2k(shareCount)} 
+- Upload At : ${moment(createTime * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}
+- Caption : ${text}
+`.trim())
+  
+ conn.sendMessage(m.chat, await getBuffer(nowatermark), 'videoMessage', { quoted: m, caption, thumbnail: await getBUffer(preview) })
+} catch (e) {
+    m.reply('Server 1 error, trying server 2...')
+    conn.sendMessage(m.chat, await getBuffer(nowatermark), 'videoMessage', { quoted: m, caption: 'Jika Ingin Hasilnya Menjadi Audio, Silahkan Reply Video Ini dengan perintah #tomp3' })
+}
+ 
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-
-handler.command = /^(tik(tok)?(dl)?)$/i
-handler.limit = true
+handler.command = /^(tiktok(dl)?)$/i
 
 module.exports = handler
+
+
+function h2k(number) {
+    var SI_POSTFIXES = ["", " K", " M", " G", " T", " P", " E"]
+    var tier = Math.log10(Math.abs(number)) / 3 | 0
+    if(tier == 0) return number
+    var postfix = SI_POSTFIXES[tier]
+    var scale = Math.pow(10, tier * 3)
+    var scaled = number / scale
+    var formatted = scaled.toFixed(1) + ''
+    if (/\.0$/.test(formatted))
+      formatted = formatted.substr(0, formatted.length - 2)
+    return formatted + postfix
+}
+
+async function getBuffer(url) {
+lets = await require('node-fetch')(url)
+bus = await lets.buffer()
+return bus
+}
