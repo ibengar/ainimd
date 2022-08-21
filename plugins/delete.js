@@ -1,19 +1,24 @@
 let handler = function (m) {
-    /*if (!m.quoted) throw false
-    let { chat, fromMe, isBaileys } = m.quoted
-    if (!fromMe) throw false
-    if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-    conn.sendMessage(chat, { delete: m.quoted.vM.key })*/
-    if (!m.quoted) throw false
-    let { chat, fromMe, id, isBaileys } = m.quoted
-    if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-    conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
-
+	if (!m.quoted) throw false
+	let { chat, fromMe } = m.quoted
+	if (!fromMe) {
+		try {
+			conn.sendMessage(chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
+		} catch (e) {
+			console.log(e)
+		}
+	} else {
+		try {
+			conn.sendMessage(chat, { delete: m.quoted.vM.key })
+		} catch (e) {
+			console.log(e)
+		}
+	}
 }
+
 handler.help = ['del', 'delete']
 handler.tags = ['tools']
-
-handler.command = /^del(ete)?$/i
-handler.limit = true
+handler.premium = true
+handler.command = /^(d(el(ete)?)?)$/i
 
 module.exports = handler
