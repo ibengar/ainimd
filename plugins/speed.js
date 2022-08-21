@@ -8,30 +8,7 @@ let format = sizeFormatter({
   keepTrailingZeroes: false,
   render: (literal, symbol) => `${literal} ${symbol}B`,
 })
-let handler = async(m, { conn, args, text, usedPrefix: _p }) => {
- const ftoko = {
-key: {
-			fromMe: false,
-			participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "0@s.whatsapp.net" } : {})
-		},
-		message: {
-			"productMessage": {
-				"product": {
-					"productImage":{
-						"mimetype": "image/jpeg",
-						"jpegThumbnail": fs.readFileSync(`./src/profil.jpg`) //Gambarnye
-					},
-					"title": "tokonya bang", //Kasih namalu 
-					"description": "iBeng BOT", 
-					"currencyCode": "USD",
-					"priceAmount1000": "2000",
-					"retailerId": "Ghost",
-					"productImageCount": 1
-				},
-				    "businessOwnerJid": `0@s.whatsapp.net`
-		}
-	}
-})
+
 let handler = async (m, { conn }) => {
   const chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
   const groupsIn = chats.filter(([id]) => id.endsWith('@g.us')) //groups.filter(v => !v.read_only)
@@ -43,21 +20,17 @@ let handler = async (m, { conn }) => {
   const cpu = cpus.reduce((last, cpu, _, { length }) => {
     last.total += cpu.total
     last.speed += cpu.speed / length
-    last.times.user += cpu.times.user
-    last.times.nice += cpu.times.nice
-    last.times.sys += cpu.times.sys
-    last.times.idle += cpu.times.idle
-    last.times.irq += cpu.times.irq
+    //last.times.user += cpu.times.user
+    //last.times.nice += cpu.times.nice
+    //last.times.sys += cpu.times.sys
+    //last.times.idle += cpu.times.idle
+    //last.times.irq += cpu.times.irq
     return last
   }, {
     speed: 0,
     total: 0,
-    times: {
-      user: 0,
-      nice: 0,
-      sys: 0,
-      idle: 0,
-      irq: 0
+    //times: {
+    
     }
   })
   let old = performance.now()
@@ -76,9 +49,6 @@ Merespon dalam ${speed} millidetik
 
 ðŸ’» *Server Info* :
 RAM: ${format(os.totalmem() - os.freemem())} / ${format(os.totalmem())}
-
-_NodeJS Memory Usage_
-${'```' + Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${format(used[key])}`).join('\n') + '```'}
 
 ${cpus[0] ? `_Total CPU Usage_
 ${cpus[0].model.trim()} (${cpu.speed} MHZ)\n${Object.keys(cpu.times).map(type => `- *${(type + '*').padEnd(6)}: ${(100 * cpu.times[type] / cpu.total).toFixed(2)}%`).join('\n')}
