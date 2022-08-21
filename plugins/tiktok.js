@@ -1,37 +1,29 @@
 let fetch = require('node-fetch')
+let axios = require('axios')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
-  let res = await fetch(API('betabotz', '/api/download/tiktok', { url: args[0] }, 'apikey'))
-  //if (res.status !== 200) throw await res.text()
-  let json = await res.json()
-  if (!json.status) throw json
-  /*let url = json.server_1 || json.info[0].videoUrl || ''
-  if (!url) throw 'Gagal mengambil url download'
-  let txt = json.info[0].text
-  for (let hashtag of json.info[0].hashtags) txt = txt.replace(hashtag, '*$&*')
-  await conn.sendFile(m.chat, url, 'tiktok.mp4', `
-▶ ${json.info[0].playCount} Views
-❤ ${json.info[0].diggCount} Likes
-🔁 ${json.info[0].shareCount} Shares
-💬 ${json.info[0].commentCount} Comments
-🎵 ${json.info[0].musicMeta.musicName} by ${json.info[0].musicMeta.musicAuthor}
-- *By:* ${json.info[0].authorMeta.nickName} (${json.info[0].authorMeta.name})
-- *Desc:*
-${txt}
-  `.trim(), m)*/
-  let url = json.result.link_dl1 || json.result.link_dl2 || ''
-  if (!url) throw 'Gagal mengambil url download'
-  let txt = `
-  - *By:* ${json.result.name}
-  - *Caption:*
-  ${json.result.caption}
-    `
-    await conn.sendFile(m.chat, url, 'tiktok.mp4', txt.trim(), m)
+let res = await fetch(API('betabotz', '/api/download/tiktok', { url: args[0] }, 'apikey'))
+    let json = await res.json()
+    
+    m.reply(data.wait)
+await conn.reply(m.chat, `Downloading media from Tiktok`, 0, {
+  contextInfo: { mentionedJid: [m.sender],
+    externalAdReply :{
+    mediaUrl: data.sc,
+    mediaType: 2,
+    description: data.deslink , 
+    title: run,
+    body: wm,
+    thumbnail: await(await fetch(img)).buffer(),
+    sourceUrl: data.sc
+     }}
+  })
+let txt = `ðŸš€ *Link:* ${await(await axios.get(`https://tinyurl.com/api-create.php?url=${args[0]}`)).data}` 
+    await conn.sendButtonVid(m.chat, json.result.link, txt, wm, `Audio`, `.tiktokaudio ${args[0]}`, m)
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.help = ['tiktoknowm'].map(v => v + ' <url>')
 handler.tags = ['downloader']
+handler.command = /^(tt|tiktok)nowm(dl)?(download(er)?)?$/i
 
-handler.command = /^(tik(tok)?(dl)?)$/i
-handler.limit = true
 
 module.exports = handler
