@@ -15,7 +15,7 @@ APIs = { // API Prefix
   xteam: 'https://api.xteam.xyz',
   zahir: 'https://zahirr-web.herokuapp.com',
   hanzz: 'https://hanzz-web.herokuapp.com',
-  neoxr: 'https://api.neoxr.eu.org/',
+  lol: 'https://api.lolhuman.xyz/',
   zeks: 'https://api.zeks.me',
   gimez: 'https://masgimenz.my.id/',
   melcanz: 'https://melcanz.com',
@@ -27,7 +27,7 @@ APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
   'https://api.xteam.xyz': 'HIRO',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
-  'https://api.neoxr.eu.org/': 'jVEMyB2ITJ',
+  'https://api.lolhuman.xyz/': 'cd7227d604d7acca5d19b4cc',
   'https://api.zeks.me': 'apikeyaine',
   'https://betabotz-api.herokuapp.com': 'BetaBotz',
   'https://melcanz.com': 'ZZBk7EBb',
