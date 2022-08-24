@@ -21,7 +21,7 @@ let handler = async (m, { conn, args }) => {
 - *Desc:*
 ${txt}
   `.trim(), m)*/
-  let url = json.result.link_dl1 || json.result.link_dl2 || ''
+  //let url = json.result.link_dl1 || json.result.link_dl2 || ''
   if (!url) throw 'Gagal mengambil url download'
   let txt = `
   - *By:* ${json.result.name}
