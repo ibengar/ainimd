@@ -16,7 +16,7 @@ APIs = { // API Prefix
   zahir: 'https://zahirr-web.herokuapp.com',
   hanzz: 'https://hanzz-web.herokuapp.com',
   lol: 'https://api.lolhuman.xyz/',
-  zeks: 'https://api.zeks.me',
+  males: 'https://malesin.xyz',
   gimez: 'https://masgimenz.my.id/',
   melcanz: 'https://melcanz.com',
   betabotz: 'https://betabotz-api.herokuapp.com',
