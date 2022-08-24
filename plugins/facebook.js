@@ -43,8 +43,8 @@ let handler = async (m, { conn, args, usedPrefix }) => {
 	//if (!json.result) throw `Media tidak ditemukan atau postingan mungkin diprivate`
 	let url = json.videoUrl
 	m.reply('Sedang diproses...')
-	if (url) await conn.sendFile(m.chat, url, 'fb.mp4', wm, m)
-	//if (url) await conn.sendMessage(m.chat, url, MessageType.video, {mimetype: 'video/mp4', quoted: m, caption: wm})
+	//if (url) await conn.sendFile(m.chat, url, 'fb.mp4', wm, m)
+	if (url) await conn.sendMessage(m.chat, url, MessageType.video, {mimetype: 'video/mp4', quoted: m, caption: wm})
 	else m.reply('Link download tidak ditemukan')
 	}
 
