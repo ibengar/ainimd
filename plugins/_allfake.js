@@ -32,22 +32,24 @@ let handler = m => m
 		global.ephemeral = '86400' // 86400 = 24jam, kalo ingin di hilangkan ganti '86400' jadi 'null' atau ''
 
 		// externalAdReply atau text with thumbnail. gatau bahasa Inggris? coba translate!
-		global.adReply = {
-			contextInfo: {
-				forwardingScore: 9999,
-				//isForwarded: true, // ini biar ada diteruskan, jika ingin di hilangkan ganti true menjadi false
-				externalAdReply: { // Bagian ini sesuka kalian berkreasi :'v
-					showAdAttribution: true,
-					title: global.ucapan,
-					body: "Hallo " + name,
-					mediaUrl: sgc,
-					description: timeh,
-					previewType: "PHOTO",
-					thumbnail: await (await fetch(pp)).buffer(),
-					sourceUrl: "https://github.com/AyGemuy",					
+		conn.relayMessage(m.chat,  {
+		requestPaymentMessage: {
+			currencyCode: 'USD',
+			amount1000: 10000000,
+			requestFrom: '0@s.whatsapp.net',
+			noteMessage: {
+				extendedTextMessage: {
+					text: 'ank ngntd',
+					contextInfo: {
+						mentionedJid: [m.sender],
+						externalAdReply: {
+							showAdAttribution: true
+						}
+					}
 				}
 			}
 		}
+	}, {})
 		global.fakeig = {
 			contextInfo: { externalAdReply: { showAdAttribution: true,
 				mediaUrl: "https://Instagram.com/wudysoft.2",
