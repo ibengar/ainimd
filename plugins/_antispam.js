@@ -1,12 +1,14 @@
+import db from '../lib/database.js'
+
 export async function all(m) {
     if (!m.message)
         return
     this.spam = this.spam ? this.spam : {}
     if (m.sender in this.spam) {
         this.spam[m.sender].count++
-        if (m.messageTimestamp.toNumber() - this.spam[m.sender].lastspam > 3) {
-            if (this.spam[m.sender].count > 3) {
-                //global.db.data.users[m.sender].banned = true
+        if (m.messageTimestamp.toNumber() - this.spam[m.sender].lastspam > 10) {
+            if (this.spam[m.sender].count > 10) {
+                //db.data.users[m.sender].banned = true
                 m.reply('*Jangan Spam!!*')
             }
             this.spam[m.sender].count = 0
