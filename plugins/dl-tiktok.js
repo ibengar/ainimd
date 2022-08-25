@@ -1,21 +1,16 @@
-var axios = require('axios');
-var handler = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args[0]) throw `uhm.. url nya mana?\n\ncontoh:\n${usedPrefix + command} https://vt.tiktok.com/yqyjPX/`
-	if (!args[0].match(/tiktok/gi)) throw `url salah`
-	try {
-		var a = await axios.get('https://rest-beni.herokuapp.com/api/tiktok?url=' + args[0])
-		if (!a.data.result.video_original) {
-			conn.sendFile(m.chat, a.data.result.video, '', '\n\nBOTSTYLEE', m)
-		} else {
-			conn.sendFile(m.chat, a.data.result.video_original, "", "\n\nBOTSTYLEE", m)
-		}
-	} catch (e) {
-log(e)
-		conn.reply(m.chat, "error", m)
-	}
+const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require('@bochilteam/scraper')
+let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
+	if (!args[0]) throw `Link tiktoknya mana?\n\ncontoh:\n${usedPrefix}${command} https://vm.tiktok.com/ZGJAmhSrp/`
+    tiktokdlv3(args[0]).then(r => {
+    let video = r.video.no_watermark
+    conn.sendFile(m.chat, video, '', `*${wm}*`, m)
+    })
 }
-handler.help = ['tiktok <url>']
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tiktok)$/i
 handler.limit = true
+handler.group = true
+
+handler.command = /^(tt|tiktok|tik)$/i
+
 module.exports = handler
