@@ -6,7 +6,7 @@ conn.mining = conn.mining ? conn.mining : {}
  conn.mining[m.chat] = true 
  setTimeout(() => { 
    delete conn.mining[m.chat]
-  }, 7 * 3)
+  }, 5 * 5)
 }
 handler.help = ['.']
 handler.tags = ['xp']
