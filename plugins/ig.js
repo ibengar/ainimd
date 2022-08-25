@@ -1,4 +1,4 @@
-const { igdl } = require('../lib/scrape')
+const { igdl } = require('../lib/scrape3')
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
