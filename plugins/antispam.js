@@ -10,7 +10,7 @@ conn.mining = conn.mining ? conn.mining : {}
 }
 handler.help = ['.']
 handler.tags = ['xp']
-handler.customPrefix = /^#/
+handler.customPrefix = /^./
 handler.owner = false
 handler.mods = false
 handler.premium = false
