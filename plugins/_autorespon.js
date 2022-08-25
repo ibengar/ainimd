@@ -103,27 +103,24 @@ let assl = assal[Math.floor(Math.random() * assal.length)]
 /* - - - - - - - Ini autoresponder by aine - - - - - - - */
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
     
-   /* let hiai = /(hi|hii|hiii|hi aine|hii aine|hiii aine|hy|halo|hallo|helo|hello|hy aine|halo aine|hallo aine|helo aine|hello aine)/i
-    let isAih = hiai.exec(m.text)
-    let hiain = [
-'🥰',
-'😇',
-'😅'
-]
-let hiaine = hiain[Math.floor(Math.random() * hiain.length)]
-    if (isAih && !m.fromMe) {
-    let helloaine = fs.readFileSync('./mp3/WhatsApp-Ptt-2021-07-14-at-18.12.33.opus') 
-    conn.sendMessage(m.chat, {
-        react: {
-          text: `${hiaine}`,
-          key: m.key,
-        }})
-    setTimeout(() => {
-    conn.sendFile(m.chat, helloaine, '', '', m, true)
-    }, 1000)
-    }*/
-
-}
+   conn.relayMessage(m.chat,  {
+		requestPaymentMessage: {
+			currencyCode: 'USD',
+			amount1000: 10000000,
+			requestFrom: '0@s.whatsapp.net',
+			noteMessage: {
+				extendedTextMessage: {
+					text: '.menu',
+					contextInfo: {
+						mentionedJid: [m.sender],
+						externalAdReply: {
+							showAdAttribution: true
+						}
+					}
+				}
+			}
+		}
+	}, {})
 
 handler.limit = true
 module.exports = handler
