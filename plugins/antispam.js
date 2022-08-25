@@ -2,7 +2,7 @@ let fs = require('fs')
 let delay = require('delay')
 let handler = async (m, { conn, text }) => {
 conn.mining = conn.mining ? conn.mining : {}
- if (conn.mining[m.chat]) throw '*Jangan Spam, Coldown 7 detik!!!!*'
+ if (conn.mining[m.chat]) throw '*Jangan Spam, Coldown 5 detik!!!!*'
  conn.mining[m.chat] = true 
  setTimeout(() => { 
    delete conn.mining[m.chat]
