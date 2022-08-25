@@ -11,6 +11,6 @@ handler.tags = ['downloader']
 handler.limit = true
 handler.group = true
 
-handler.command = /^(tt|tiktok|tik)$/i
+handler.command = /^(tt|tiktoknowm||tiktok|tik)$/i
 
 module.exports = handler
