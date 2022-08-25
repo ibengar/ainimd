@@ -9,8 +9,9 @@ let format = sizeFormatter({
   render: (literal, symbol) => `${literal} ${symbol}B`,
 })
 let handler = async (m, { conn }) => {
-  const chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
-  const groupsIn = chats.filter(([id]) => id.endsWith('@g.us')) //groups.filter(v => !v.read_only)
+  const chats = conn.chats.all()
+  const groups = chats.filter(v => v.jid.endsWith('g.us'))
+  const groupsIn = groups.filter(v => !v.read_only)
   const used = process.memoryUsage()
   const cpus = os.cpus().map(cpu => {
     cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
@@ -37,21 +38,26 @@ let handler = async (m, { conn }) => {
     }
   })
   let old = performance.now()
-  await m.reply('_Testing speed..._')
   let neww = performance.now()
   let speed = neww - old
   m.reply(`
 Merespon dalam ${speed} millidetik
 
 ðŸ’¬ Status :
-- *${groupsIn.length}* Group Chats
+- *${groups.length}* Group Chats
 - *${groupsIn.length}* Groups Joined
-- *${groupsIn.length - groupsIn.length}* Groups Left
-- *${chats.length - groupsIn.length}* Personal Chats
+- *${groups.length - groupsIn.length}* Groups Left
+- *${chats.length - groups.length}* Personal Chats
 - *${chats.length}* Total Chats
 
+ðŸ“± *Phone Info* :
+${'```' + `
+ðŸ”‹ Battery : ${conn.battery ? `${conn.battery.value}% ${conn.battery.live ? 'ðŸ”Œ Charging...' : 'âš¡ Discharging'}` : 'Unknown'}
+${util.format(conn.user.phone)}
+`.trim() + '```'}
+
 ðŸ’» *Server Info* :
-RAM: ${format(os.totalmem() - os.freemem())} / ${format(os.totalmem())}
+RAM: ${format(os.totalmem() - os.freemem())} / 8 GB
 
 _NodeJS Memory Usage_
 ${'```' + Object.keys(used).map((key, _, arr) => `${key.padEnd(Math.max(...arr.map(v=>v.length)),' ')}: ${format(used[key])}`).join('\n') + '```'}
@@ -68,5 +74,3 @@ handler.tags = ['info']
 
 handler.command = /^(ping|speed)$/i
 module.exports = handler
-
-
