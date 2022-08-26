@@ -55,7 +55,7 @@ const defaultMenu = {
   header: '╭┉┉┉≻ *“%category”* ≺┉┉┉╮',
   body: `┆ \t ➦ _%cmd%islimit%isPremium_ `,
   footer: '┆',
-  after: `╰┉┉┉≻\t _${me}_ \t`,
+  after: `╰┉┉┉≻\t _${me}_ \t
 *%npmname* | %version
 ${'```%npmdesc```'}
 `,
