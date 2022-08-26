@@ -8,7 +8,7 @@ let handler = async (m, { command, conn, text }) => {
   }, 'APIKEY')
   await conn.sendFile(m.chat, url, 'nulis.jpg', '', m, false, { thumbnail: await (await fetch(url)).buffer() })
 }
-handler.help = new Array(6).fill('magernulis').map((v, i) => v + (i + 1) + ' <teks>')
+handler.help = new Array(6).fill('nulis').map((v, i) => v + (i + 1) + ' <teks>')
 handler.tags = ['premium']
 
 handler.command = /^nulis[2-6]?$/i
