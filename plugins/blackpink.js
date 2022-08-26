@@ -1,8 +1,8 @@
 let fetch = require('node-fetch')
 let bpink = []
-fetch('https://raw.githubusercontent.com/ibengar/ainimd/main/plugins/sma.txt?token=GHSAT0AAAAAABXLQWLHCN4NR54FXGAXSUYUYYJCEZQ')
-    .then(res => res.text())
-    .then(txt => bpink = txt.split('\n'))
+fetch('https://raw.githubusercontent.com/Laksmana27/DATABASE-3/main/gabut/bohaysma.json')
+    .then(res => res.json())
+    .then(json => bpink = json.split('\n'))
 let handler = async (m, { conn }) => {
     let img = bpink[Math.floor(Math.random() * bpink.length)]
     if (!img) throw img
