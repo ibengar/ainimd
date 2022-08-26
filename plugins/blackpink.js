@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let bpink = []
-fetch('https://raw.githubusercontent.com/arivpn/dbase/master/kpop/blekping.txt')
+fetch('https://raw.githubusercontent.com/ibengar/ainimd/main/plugins/sma.txt?token=GHSAT0AAAAAABXLQWLHCN4NR54FXGAXSUYUYYJCEZQ')
     .then(res => res.text())
     .then(txt => bpink = txt.split('\n'))
 let handler = async (m, { conn }) => {
