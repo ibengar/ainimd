@@ -1,6 +1,6 @@
 let fetch = require('node-fetch')
 let handler = async (m, { command, conn, text }) => {
-  let id = (command.match(/[1-6]$/) || [])[0] || ''
+  let id = (command.match(/[2-6]$/) || [])[2] || ''
   let url = global.API('xteam', '/magernulis' + id, {
     text,
     nama: conn.getName(m.sender),
