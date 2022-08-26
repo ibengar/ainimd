@@ -22,23 +22,23 @@ let handler = async function (m, { conn, text, usedPrefix }) {
   let expnye = global.db.data.users[m.sender].exp += 10000
   let uang = global.db.data.users[m.sender].money += 20000
   let limitnye = global.db.data.users[m.sender].limit += 20
-// let nabungnye = global.db.data.users[m.sender].nabung += 100000
-// let banknye = global.db.data.users[m.sender].bank += 1000000
-// let petnye = global.db.data.users[m.sender].pet += 20
-// let cuponye = global.db.data.users[m.sender].cupon += 10
-// let legendarynye = global.db.data.users[m.sender].legendary += 50
-// let boxs = global.db.data.users[m.sender].boxs += 50
-// let berliannye = global.db.data.users[m.sender].berlian += 5
-// let emasbatangnye = global.db.data.users[m.sender].emasbatang += 10
-// let emasbiasanye = global.db.data.users[m.sender].emasbiasa += 15
-// let botolnye = global.db.data.users[m.sender].botol += 10000
-// let karudsnye = global.db.data.users[m.sender].kardus += 10000
-// let kalengnye = global.db.data.users[m.sender].kaleng += 10000
-// let anggurnye = global.db.data.users[m.sender].anggur += 10000
-// let jeruknye = global.db.data.users[m.sender].jeruk += 10000
-// let apelnye = global.db.data.users[m.sender].apel += 10000
-// let pisangnye = global.db.data.users[m.sender].pisang += 10000
-// let mangganye = global.db.data.users[m.sender].mangga += 10000
+ let nabungnye = global.db.data.users[m.sender].nabung += 100000
+  let banknye = global.db.data.users[m.sender].bank += 1000000
+ let petnye = global.db.data.users[m.sender].pet += 20
+ let cuponye = global.db.data.users[m.sender].cupon += 10
+let legendarynye = global.db.data.users[m.sender].legendary += 50
+ let boxs = global.db.data.users[m.sender].boxs += 50
+  let berliannye = global.db.data.users[m.sender].berlian += 5
+ let emasbatangnye = global.db.data.users[m.sender].emasbatang += 10
+ let emasbiasanye = global.db.data.users[m.sender].emasbiasa += 15
+ let botolnye = global.db.data.users[m.sender].botol += 10000
+ let karudsnye = global.db.data.users[m.sender].kardus += 10000
+   let kalengnye = global.db.data.users[m.sender].kaleng += 10000
+   let anggurnye = global.db.data.users[m.sender].anggur += 10000
+   let jeruknye = global.db.data.users[m.sender].jeruk += 10000
+   let apelnye = global.db.data.users[m.sender].apel += 10000
+   let pisangnye = global.db.data.users[m.sender].pisang += 10000
+  let mangganye = global.db.data.users[m.sender].mangga += 10000
   let chatnye =`Selamat kamu mendapatkan :\n+1000 Exp\n+1000 Money\n+5 Limit` // \n\nJangan lupa ketik :\n${usedPrefix}codereg 070698\nUntuk mendapatkan bonus! \n+100000 Nabung Exp\n+1000000 Nabung Money\n+10 Cupon\n+10 Pet Random\n+50 Boxs\n+50 Legendary\n+5 Berlian\n+15 EmasBiasa\n+10 EmasBatang\n+10000 Kaleng\n+10000 Kardus\n+10000 Botol\n+10000 Anggur\n+10000 Jeruk\n+10000 Apel\n+10000 Mangga\n+10000 Pisang`
   let sn = createHash('md5').update(m.sender).digest('hex')
   m.reply(`
@@ -48,53 +48,13 @@ Daftar berhasil!
 │ Nama: ${name}
 │ Umur: ${age} tahun
 │ SN: ${sn}
-╰──── conn.sendButton(m.chat, text.trim(), 'Made with ♡ by Aine', null, [['Donasi', '.donasi'],['Owner', '.owner']], m)
-    conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://aiinne.github.io/', 'Website', '', '', [
-      ['Donate', '/donasi'],
-      ['Sewa Bot', '/sewa'],
-      ['Owner', '/owner']
-    ], m)
-    let url = `https://telegra.ph/file/ab1df70dfd5c2bac64da1.jpg`.trim()
-    let res = await fetch(url)
-    let buffer = await res.buffer()
-    let message = await prepareWAMessageMedia({ image: buffer }, { upload: conn.waUploadToServer })
-                const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    templateMessage: {
-                        hydratedTemplate: {
-                            imageMessage: message.imageMessage,
-                            hydratedContentText: text.trim(),
-                            hydratedFooterText:'Ⓟ premium | Ⓛ limit',
-                            hydratedButtons: [{
-                                urlButton: {
-                                    displayText: 'Website',
-                                    url: 'https://Ainebot.github.io/'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Donasi',
-                                    id: '/donasi'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Sewa',
-                                    id: '/sewa'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Owner',
-                                    id: '/owner'
-                                }
-                            }]
-                        }
-                    }
-                }), { userJid: m.chat, quoted: m })
-                conn.relayMessage(m.chat, template.message, { messageId: template.key.id })
-  } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
-    throw e
-  }
+╰────  
+    *SILAHKAN KETIK ${usedPrefix}.VERIFY BIAR BONUSNYA DAPET*
+
+${chatnye}
+`.trim())
+} else m.reply(`Kamu sudah *daftar*..\nMohon tunggu ${waktuh} untuk bisa *daftar* kembali..`)
 }
-    
 handler.help = ['daftar'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['main']
 
