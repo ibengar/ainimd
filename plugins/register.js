@@ -49,44 +49,45 @@ Daftar berhasil!
 │ Umur: ${age} tahun
 │ SN: ${sn}
 ╰──── 
-    templateButtons: [
-                {
-                    urlButton: {
-                        displayText: `${namebot}`,
-                        url: 'https://kannxapi.herokuapp.com/'
+    let url = `https://telegra.ph/file/ab1df70dfd5c2bac64da1.jpg`.trim()
+    let res = await fetch(url)
+    let buffer = await res.buffer()
+    let message = await prepareWAMessageMedia({ image: buffer }, { upload: conn.waUploadToServer })
+                const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            imageMessage: message.imageMessage,
+                            hydratedContentText: text.trim(),
+                            hydratedFooterText:'Ⓟ premium | Ⓛ limit',
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'Website',
+                                    url: 'https://Ainebot.github.io/'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Donasi',
+                                    id: '/donasi'
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Sewa',
+                                    id: '/sewa'
+                                }  
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'Owner',
+                                    id: '/owner'
+                                }
+                            }]
+                        }
                     }
-                },
-                {
-                    urlButton: {
-                        displayText: 'Group Official',
-                        url: sgc
-                    }
-                },
-                {
-                    quickReplyButton: {
-                        displayText: 'Owner',
-                        id: '.owner'
-                    }
-                },
-                {
-                    quickReplyButton: {
-                        displayText: 'Speed',
-                        id: '.ping'
-                    }
-                },
-                {
-                    quickReplyButton: {
-                        displayText: 'Donasi',
-                        id: '.donasi'
-                    }
-                },
-            ]
-        }
-
-
-${chatnye}
-`.trim())
-} else m.reply(`Kamu sudah *daftar*..\nMohon tunggu ${waktuh} untuk bisa *daftar* kembali..`)
+                }), { userJid: m.chat, quoted: m })
+                conn.relayMessage(m.chat, template.message, { messageId: template.key.id })*/
+  } catch (e) {
+    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    throw e
+  }
 }
 handler.help = ['daftar'].map(v => v + ' <nama>.<umur>')
 handler.tags = ['main']
