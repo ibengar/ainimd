@@ -72,6 +72,9 @@ let buttonMessage= {
 {'buttonId':'.menu','buttonText':{'displayText':'ᴍᴇɴᴜ'},'type':1},
 {'buttonId':'.donasi','buttonText':{'displayText':'ᴅᴏɴᴀsɪ'},'type':1}
 ],
+'headerType':6}
+    await conn.sendMessage(m.chat,buttonMessage, { quoted:m})
+}
 *Jika SN kamu lupa ketik ${usedPrefix}ceksn*
 
 ${chatnye}
