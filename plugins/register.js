@@ -48,9 +48,41 @@ Daftar berhasil!
 │ Nama: ${name}
 │ Umur: ${age} tahun
 │ SN: ${sn}
-╰────
+╰──── 
+    templateButtons: [
+                {
+                    urlButton: {
+                        displayText: `${namebot}`,
+                        url: 'https://kannxapi.herokuapp.com/'
+                    }
+                },
+                {
+                    urlButton: {
+                        displayText: 'Group Official',
+                        url: sgc
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Owner',
+                        id: '.owner'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Speed',
+                        id: '.ping'
+                    }
+                },
+                {
+                    quickReplyButton: {
+                        displayText: 'Donasi',
+                        id: '.donasi'
+                    }
+                },
+            ]
+        }
 
-*Jika SN kamu lupa ketik ${usedPrefix}ceksn*
 
 ${chatnye}
 `.trim())
