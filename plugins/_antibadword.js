@@ -14,7 +14,7 @@ export function before(m, { isBotAdmin }) {
 
 [❗] Jika warning mencapai 5 kamu akan *dibanned+kick*
 
-Anda hanya bisa meminta Owner untuk membuka banned-nya !\n\n🌸 Bot By Fangz
+Anda hanya bisa meminta Owner untuk membuka banned-nya !\n\n🌸 Bot By iBeng-BOTZZ
 
 “Barang siapa yang beriman kepada Allah dan Hari Akhir maka hendaklah dia berkata baik atau diam” (HR. al-Bukhari dan Muslim).`, wm, [['🎀CEK WARN', '.cekdosa'], ['🎐AUTHOR BOT', '.owner']], m)
         if (user.warning >= 5) {
