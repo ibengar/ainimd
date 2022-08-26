@@ -44,12 +44,13 @@ let legendarynye = global.db.data.users[m.sender].legendary += 50
   m.reply(`
 Daftar berhasil!
 
-╭─「 Info 」
-│ Nama: ${name}
-│ Umur: ${age} tahun
-│ SN: ${sn}
-╰────  
-    *SILAHKAN KETIK ${usedPrefix}.VERIFY BIAR BONUSNYA DAPET*
+┏─• *ᴜsᴇʀs*
+│▸ *sᴛᴀᴛᴜs:* ☑️ sᴜᴄᴄᴇssғᴜʟ
+│▸ *ɴᴀᴍᴇ:* ${name}
+│▸ *ᴀɢᴇ:* ${age} ʏᴇᴀʀs
+│▸ *sɴ:* ${sn}
+┗────··· 
+    *SILAHKAN KETIK ${usedPrefix}VERIFY BIAR BONUSNYA DAPET*
 
 ${chatnye}
 `.trim())
