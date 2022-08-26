@@ -49,7 +49,10 @@ Daftar berhasil!
 │ Umur: ${age} tahun
 │ SN: ${sn}
 ╰────
-
+[
+{'buttonId':'.menu','buttonText':{'displayText':'ᴍᴇɴᴜ'},'type':1},
+{'buttonId':'.donasi','buttonText':{'displayText':'ᴅᴏɴᴀsɪ'},'type':1}
+],
 *Jika SN kamu lupa ketik ${usedPrefix}ceksn*
 
 ${chatnye}
