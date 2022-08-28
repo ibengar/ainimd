@@ -160,7 +160,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-      conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://chat.whatsapp.com/ByhYR5yoAW274BNlkBs64d', 'GROUP WA' [
+      conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://chat.whatsapp.com/ByhYR5yoAW274BNlkBs64d', 'GROUP WA''', '', [
       ['Sewa Bot', '/sewa'],
       ['Owner', '/owner'],
       ['']
