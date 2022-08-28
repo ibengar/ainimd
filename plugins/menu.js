@@ -165,8 +165,15 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       [''],
       ['']
     ], m)
+    
     //----------------- FAKE
-    conn.relayMessage(m.chat,  {
+    let ftoko = {
+    key: {
+    fromMe: false,
+    participant: '0@s.whatsapp.net',
+    remoteJid: 'status@broadcast',
+  },
+  conn.relayMessage(m.chat,  {
 		requestPaymentMessage: {
 			currencyCodeIso4217: 'USD',
 			amount1000: 1000,
@@ -178,9 +185,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 						mentionedJid: [m.sender],
 						externalAdReply: {
 							showAdAttribution: true
-						}
-					}
-				}
+                         }
+                        }
+                     }
 
 } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
