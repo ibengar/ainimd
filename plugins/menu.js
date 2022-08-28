@@ -169,43 +169,26 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let ftoko = {
     key: {
     fromMe: false,
-    participant: '0@s.whatsapp.net',
-    remoteJid: 'status@broadcast',
-  },
-  message: {
-  "productMessage": {
-  "product": {
-  "productImage":{
-  "mimetype": "image/jpeg",
-  "jpegThumbnail": fs.readFileSync('./IMG-20220828-WA0003.jpg'),
-    },
-  "title": 'Hai Kak ' + conn.getName(m.sender),
-  "description": wm, 
-  "currencyCode": "US",
-  "priceAmount1000": "100",
-  "retailerId": namebot,
-  "productImageCount": 1
-        },
-  "businessOwnerJid": `0@s.whatsapp.net`
-  }
-  }
-  }
-  let fgif = {
-    key: {
-    remoteJid: 'status@broadcast',
-    participant : '0@s.whatsapp.net'},
-    message: { 
-                  "videoMessage": { 
-                  "title": wm,
-                  "h": `Nekohime`,
-                  'duration': '99999999', 
-                  'gifPlayback': 'true', 
-                  'caption': bottime,
-                  'jpegThumbnail': thumb
-                         }
-                        }
-                     }
-  } catch (e) {
+    participanconn.relayMessage(m.chat,  {
+		requestPaymentMessage: {
+			currencyCodeIso4217: 'USD',
+			amount1000: 1000,
+			requestFrom: m.sender,
+			noteMessage: {
+				extendedTextMessage: {
+					text: 'ingfopay',
+					contextInfo: {
+						mentionedJid: [m.sender],
+						externalAdReply: {
+							showAdAttribution: true
+						}
+					}
+				}
+			}
+		}
+	}, {})
+
+} catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
   }
