@@ -177,7 +177,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   "product": {
   "productImage":{
   "mimetype": "image/jpeg",
-  "jpegThumbnail": fs.readFileSync('./thumbnail.jpg'),
+  "jpegThumbnail": fs.readFileSync('./IMG-20220828-WA0003.jpg'),
     },
   "title": 'Hai Kak ' + conn.getName(m.sender),
   "description": wm, 
