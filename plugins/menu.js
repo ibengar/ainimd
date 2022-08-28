@@ -167,28 +167,17 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     ], m)
     
     //----------------- FAKE
-    let ftoko = {
-    key: {
-    fromMe: false,
-    participant: '0@s.whatsapp.net',
-    remoteJid: 'status@broadcast',
-  },
-  conn.relayMessage(m.chat,  {
-		requestPaymentMessage: {
-			currencyCodeIso4217: 'USD',
-			amount1000: 1000,
-			requestFrom: m.sender,
-			noteMessage: {
-				extendedTextMessage: {
-					text: 'ingfopay',
-					contextInfo: {
-						mentionedJid: [m.sender],
-						externalAdReply: {
-							showAdAttribution: true
-                         }
-                        }
-                     }
-
+    let handler  = async (m, { conn }) => {
+ await conn.relayMessage(m.chat, { requestPaymentMessage: {
+  noteMessage: { extendedTextMessage: { text: me,
+  currencyCodeIso4217: 'USD',
+  requestFrom: '0@s.whatsapp.net',
+  expiryTimestamp: 8600,
+  amount: 10000,
+  background: thumb
+}}}}, {})
+}
+//----------------- do
 } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
