@@ -51,7 +51,7 @@ const defaultMenu = {
 ├ Database: %rtotalreg dari %totalreg
 ├ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
 └────
-%readmore`.trimStart(), 
+/*%readmore`.trimStart(),*/ 
   header: '┌─「 %category 」',
   body: '├ %cmd %islimit %isPremium',
   footer: '└────\n', 
