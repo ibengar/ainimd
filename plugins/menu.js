@@ -166,10 +166,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       ['']
     ], m)
     //----------------- FAKE
-    let ftoko = {
-    key: {
-    fromMe: false,
-    participanconn.relayMessage(m.chat,  {
+    conn.relayMessage(m.chat,  {
 		requestPaymentMessage: {
 			currencyCodeIso4217: 'USD',
 			amount1000: 1000,
@@ -184,9 +181,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 						}
 					}
 				}
-			}
-		}
-	}, {})
 
 } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
