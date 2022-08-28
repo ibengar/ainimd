@@ -36,7 +36,7 @@ wa.me/${owner[0]}
   products:[{productId:'7487741964584083'}]}],
   headerImage: { productId: '7487741964584083',
   jpegThumbnail: baper },
-  businessOwnerJid: `6281257172080@s.whatsapp.net`
+  businessOwnerJid: `6283840017405@s.whatsapp.net`
   },
   footerText: 'https://ibengrest-api.herokuapp.com',
   }},{})
