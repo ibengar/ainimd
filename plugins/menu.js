@@ -160,9 +160,10 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://facebook.com/ribeng2', 'FACEBOOK', '', '', [
-      [''],
-      [''],
+       conn.sendButton(m.chat, text.trim(), 'Made with ♡ by iBeng', null, [['sewa bot', '.sewa'],['Owner', '.owner']], m)
+     conn.sendHydrated(m.chat, text.trim(), 'Ⓟ premium | Ⓛ limit', null, 'https://chat.whatsapp.com/ByhYR5yoAW274BNlkBs64d', 'GROUP WA', '', '', [
+      ['Sewa Bot', '/sewa'],
+      ['Owner', '/owner'],
       ['']
     ], m)
     /*let url = `https://telegra.ph/file/ab1df70dfd5c2bac64da1.jpg`.trim()
