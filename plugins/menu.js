@@ -40,10 +40,9 @@ const defaultMenu = {
 ├ VERSION : *6.8.1*
 ├ TOTAL USER : *%totalreg*
 ├ UPTIME : *%uptime*
-├ BATTERY : ${conn.battery ? `${conn.battery.value}% ${conn.battery.live ? '🔌 Lagi di cas' : '⚡ Engga di cas'}` : 'Unknown'}
+├ BATTERY : ${conn.battery ? `${conn.battery.value}% ${conn.battery.live ? ' Lagi di cas' : ' Engga di cas'}` : 'Unknown'}
 ├ PREFIX :*「 MULTI BANG 」*
 ├ SC ORI :
-├ *https://ibengrest-api.herokuapp.com*
 ├ RECODE : *@${owner[0]}*
 └─
 
