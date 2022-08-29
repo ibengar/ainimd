@@ -1,4 +1,4 @@
-const { MessageType } = require('@adiwajshing/baileys')
+/*const { MessageType } = require('@adiwajshing/baileys')
 let handler = async function(m, { conn , args, text, isAdmin, isBotAdmin, groupMetadata }) {
 
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -12,7 +12,7 @@ let handler = async function(m, { conn , args, text, isAdmin, isBotAdmin, groupM
     await conn.reply(m.chat, `
 *[ CHAT ANTI VIRTEX ]*
 _Terdeteksi *@${asu.split("@")[0]}* telah mengirim virtex!_
-Maaf Kamu akan dikick oleh *BOTOLBOTZ*
+Maaf Kamu akan dikick oleh *BOT_STYLE*
 `.trim(), m, { 
       contextInfo: {  
         mentionedJid: [asu]
@@ -21,13 +21,13 @@ Maaf Kamu akan dikick oleh *BOTOLBOTZ*
  if (isBotAdmin) {
    conn.groupRemove(m.chat, [asu])
      } else { 
-     	m.reply('```JADIKAN BOTOLBOTZ SEBAGAI ADMIN !!!```')
+     	m.reply('```JADIKAN BOT_STYLE SEBAGAI ADMIN !!!```')
     }
   } conn.sendMessage(vir + '@s.whatsapp.net', `${m.text}`, MessageType.text)
 }
-handler.customPrefix = /🍲🍲/i
+handler.customPrefix = //i
 handler.command = new RegExp
 
 handler.fail = null
 
-module.exports = handler
+module.exports = handler*/
