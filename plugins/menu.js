@@ -27,7 +27,7 @@ const wit = moment.tz('Asia/Jayapura').format("HH:mm:ss")
                  "h": `Hmm`,
                  'seconds': `${pickRandom(['17818','6651','9123','1246','2241','613'])}`, 
                  'caption': `*Halo* ${name.vnmae || name.notify || name.name || ('+' + name.jid.split`@`[0])}, *${ucapan()}* *${ucapin()}*, ${pickRandom(['*Wis*','aku sayang kamu','*xixi*','*cans cuk*','*kawaii*','*hemhe*'])}`,
-                 'jpegThumbnail': fs.readFileSync(`./cewe/${pickRandom(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'])}.jpg`)
+                 'jpegThumbnail': fs.readFileSync(`./src/${pickRandom(['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q'])}.jpg`)
                         }
                        }
 	                  }
