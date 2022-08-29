@@ -35,26 +35,26 @@ let tags = {
 }
 const defaultMenu = {
   before:`
-┌─「 *iBeng-BOTZZ* 」
-├ Hai, %name!
-├ Tersisa *%limit Limit*
-├ Role *%role*
-├ Level *%level (%exp / %maxexp)*
-├ [%xp4levelup]
-├ %totalexp XP secara Total
-│ 
-├ Tanggal: *%week %weton, %date*
-├ Tanggal Islam: *%dateIslamic*
-├ Waktu: *%time*
-│
-├ Uptime: *%uptime (%muptime)*
-├ Database: %rtotalreg dari %totalreg
-├ Memory Used : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
-└────
+╭──〔  𝐈𝐍𝐅𝐎 𝐔𝐒𝐄𝐑  〕─⬣
+│⬡ 𝚄𝚂𝙴𝚁 : *%name*
+│⬡ 𝚁𝙴𝙼𝙰𝙸𝙽𝙸𝙽𝙶 𝙻𝙸𝙼𝙸𝚃 : *%limit* 𝙻𝙸𝙼𝙸𝚃
+│⬡ 𝚁𝙾𝙻𝙴 : *%role*
+│⬡ 𝙻𝙴𝚅𝙴𝙻 : *%level (%exp / %maxexp)* 
+│⬡ 𝚃𝙾𝚃𝙰𝙻 𝚇𝙿 : *%totalexp* 𝚇𝙿
+┌──〔  𝐓 𝐎 𝐃 𝐀 𝐘  〕───⬣
+│⬡ 𝚃𝙾𝙳𝙰𝚈 : *%week %weton* 
+│⬡ 𝙳𝙰𝚃𝙴 : *%date*
+│⬡ 𝙳𝙰𝚃𝙴 𝙸𝚂𝙻𝙰𝙼𝙸𝙲 : *%dateIslamic*
+│⬡ 𝚃𝙸𝙼𝙴 : *%time*
+┌──〔  𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄  〕───⬣
+│⬡ 𝚄𝙿𝚃𝙸𝙼𝙴 : *%uptime*
+│⬡ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 : %rtotalreg 𝚍𝚊𝚛𝚒 %totalreg 
+│⬡ 𝙼𝙴𝙼𝙾𝚁𝚈 𝚄𝚂𝙴𝙳 : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
+╰─────────────⬣
 %readmore`.trimStart(),
-  header: ' *%category*',
-  body: ' • %cmd %islimit %isPremium',
-  footer: '\n',
+  header: '╭─❑ 〔 %category 〕 ❑─\n┃',
+  body: '┃❑ %cmd %islimit %isPremium',
+  footer: '┃\n╰────────❑\n', 
   after: `*Made by iBeng*
 *%npmname* | %version
 ${'```%npmdesc```'}
