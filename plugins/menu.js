@@ -166,17 +166,49 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       ['']
     ], m)
     
-    //----------------- FAKE
-    let handler  = async (m, { conn }) => {
- await conn.relayMessage(m.chat, { requestPaymentMessage: {
-  noteMessage: { extendedTextMessage: { text: me,
-  currencyCodeIso4217: 'USD',
-  requestFrom: '0@s.whatsapp.net',
-  expiryTimestamp: 8600,
-  amount: 10000,
-  background: thumb
-}}}}, {})
+    //━━━━━━━━[ FAKE REPLY ]━━━━━━━━//
+const fkontak = {
+	"key": {
+    "participants":"0@s.whatsapp.net",
+		"remoteJid": "status@broadcast",
+		"fromMe": false,
+		"id": "Halo"
+	},
+	"message": {
+		"contactMessage": {
+			"vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+		}
+	},
+	"participant": "0@s.whatsapp.net"
 }
+const ftroli = {
+    key : {
+    remoteJid: 'status@broadcast',
+    participant : '0@s.whatsapp.net'
+    },
+    message: {
+    orderMessage: {
+    itemCount : 2022,
+    status: 1,
+    surface : 1,
+    message: `Hai Kak ${name}!`, 
+    orderTitle: `▮Menu ▸`,
+    thumbnail: await (await fetch(fla + 'Menu')).buffer(), //Gambarnye
+    sellerJid: '0@s.whatsapp.net' 
+    }
+    }
+    }
+const fdoc = {
+   key : {
+   remoteJid: 'status@broadcast',
+   participant : '0@s.whatsapp.net'
+   },
+   message: {
+   documentMessage: {
+   title: wm, 
+   }
+   }
+   }
 //----------------- do
 } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
