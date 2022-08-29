@@ -20,7 +20,7 @@ APIs = { // API Prefix
   gimez: 'https://masgimenz.my.id/',
   melcanz: 'https://melcanz.com',
   betabotz: 'https://betabotz-api.herokuapp.com',
-  LeysCoder: 'https://leyscoders-api.herokuapp.com',
+  ibengrest: 'https://ibengrest-api.herokuapp.com',
   restapi: 'https://x-restapi.herokuapp.com'
 }
 APIKeys = { // APIKey Here
@@ -31,7 +31,7 @@ APIKeys = { // APIKey Here
   'https://api.zeks.me': 'apikeyaine',
   'https://betabotz-api.herokuapp.com': 'BetaBotz',
   'https://melcanz.com': 'ZZBk7EBb',
-  'https://leyscoders-api.herokuapp.com': 'dappakntlll',
+  'https://ibengrest-api.herokuapp.com': 'ibeng',
   'https://x-restapi.herokuapp.com': 'BETA'
 }
 
