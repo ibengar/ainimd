@@ -1,15 +1,16 @@
-let fetch = require("node-fetch")
-
-let handler = async (m, { conn }) => {
-  let res = await fetch(global.API('ibengrest', '/api/wallpaper/ppcouple', {}, 'apikey'))
-  if (!res.ok) throw await res.text()
+let fetch = require('node-fetch')
+let handler = async (m, { conn, command }) => {
+  let res = await fetch('https://botcahx-rest-api.herokuapp.com/api/randomgambar/couplepp')
+  if (res.status != 200) throw await res.text()
   let json = await res.json()
   if (!json.status) throw json
-  await conn.sendFile(m.chat, json.result.male, '', 'cowo', m)
-  await conn.sendFile(m.chat, json.result.female, '', 'cewe', m)
+conn.sendButtonImg(m.chat, json.result.female,  'Cewe', wm, 'Next', '.ppcp', m)
+conn.sendFile(m.chat, json.result.male,'pria.jpg',  'Cowo', m)
+
 }
-handler.help = ['ppcouple', 'ppcp']
-handler.tags = ['maker','anime']
-handler.command = /^(pp(cp|couple))$/i
+handler.help = ['ppcp']
+handler.tags = ['internet']
+handler.command = /^ppcp$/i
+
 
 module.exports = handler
