@@ -35,40 +35,23 @@ let tags = {
 }
 const defaultMenu = {
   before:`
-┌─「 I N F O - B O T Z 」
-├ BOT NAME : *iBeng-BOTZ*
-├ VERSION : *6.8.1*
-├ TOTAL USER : *%totalreg*
-├ UPTIME : *%uptime*
-├ BATTERY : ${conn.battery ? `${conn.battery.value}% ${conn.battery.live ? ' Lagi di cas' : ' Engga di cas'}` : 'Unknown'}
-├ PREFIX :*「 MULTI BANG 」*
-├ SC ORI :
-├ RECODE : *@${owner[0]}*
-└─
-
-┌─「 I N F O - K A M U 」
-├ NAMA : *${name.vnmae || name.notify || name.name || ('+' + name.jid.split`@`[0])}*
-├ NOMOR TELEPON : *https://wa.me/${who.split`@`[0]}*
-├ REGISTER : *${registered ? 'Yes': 'No'}*
-├ ROLE : *${role}*
-├ HEALTH : *${healt}*
-├ MONEY : *${money}*
-├ LIMIT : *${limit}*
-├ LEVEL: *${level}*
-├ XP : *${exp}*
-└─
-
-┌─「 L O C A L - T I M E 」
-├ ${wib} *WIB*
-├ ${wita} *WITA*
-├ ${wit} *WIT*
-└─
-
-┌─「 I N F O - D A T E 」
-├ HARI : *%week %weton*
-├ TANGGAL ; *%date*
-├ TGL ISLAM : *%dateIslamic*
-└──────────────────────
+╭──〔  𝐈𝐍𝐅𝐎 𝐔𝐒𝐄𝐑  〕─⬣
+│⬡ 𝚄𝚂𝙴𝚁 : *%name*
+│⬡ 𝚁𝙴𝙼𝙰𝙸𝙽𝙸𝙽𝙶 𝙻𝙸𝙼𝙸𝚃 : *%limit* 𝙻𝙸𝙼𝙸𝚃
+│⬡ 𝚁𝙾𝙻𝙴 : *%role*
+│⬡ 𝙻𝙴𝚅𝙴𝙻 : *%level (%exp / %maxexp)* 
+│⬡ 𝚃𝙾𝚃𝙰𝙻 𝚇𝙿 : *%totalexp* 𝚇𝙿
+┌──〔  𝐓 𝐎 𝐃 𝐀 𝐘  〕───⬣
+│⬡ 𝚃𝙾𝙳𝙰𝚈 : *%week %weton* 
+│⬡ 𝙳𝙰𝚃𝙴 : *%date*
+│⬡ 𝙳𝙰𝚃𝙴 𝙸𝚂𝙻𝙰𝙼𝙸𝙲 : *%dateIslamic*
+│⬡ 𝚃𝙸𝙼𝙴 : *%time*
+┌──〔  𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄  〕───⬣
+│⬡ 𝚄𝙿𝚃𝙸𝙼𝙴 : *%uptime*
+│⬡ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 : %rtotalreg 𝚍𝚊𝚛𝚒 %totalreg 
+│⬡ 𝙼𝙴𝙼𝙾𝚁𝚈 𝚄𝚂𝙴𝙳 : *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB*
+|⬡ REST API : *https://ibengrest-api.herokuapp.com*
+╰─────────────⬣
 %readmore`.trimStart(),
   header: '╭─❑ 〔 %category 〕 ❑─\n┃',
   body: '┃❑ %cmd %islimit %isPremium',
