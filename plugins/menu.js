@@ -181,23 +181,7 @@ const fkontak = {
 	},
 	"participant": "0@s.whatsapp.net"
 }
-const ftroli = {
-    key : {
-    remoteJid: 'status@broadcast',
-    participant : '0@s.whatsapp.net'
-    },
-    message: {
-    orderMessage: {
-    itemCount : 2022,
-    status: 1,
-    surface : 1,
-    message: `Hai Kak ${name}!`, 
-    orderTitle: `▮Menu ▸`,
-    thumbnail: await (await fetch(fla + 'Menu')).buffer(), //Gambarnye
-    sellerJid: '0@s.whatsapp.net' 
-    }
-    }
-    }
+
 const fdoc = {
    key : {
    remoteJid: 'status@broadcast',
