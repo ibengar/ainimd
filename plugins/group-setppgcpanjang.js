@@ -35,13 +35,13 @@ let handler = async (m, { conn, command, usedPrefix }) => {
 	}
 }
 
-handler.help = ['setppgc2']
-handler.tags = ['group']
-handler.command = /^(set((gro?up|gc)pp(2|panjang)|pp(gro?up|gc)(2|panjang)))$/i
+handler.menugroup = ['setppgc2']
+handler.tagsgroup = ['group']
+handler.command = /^(set((gro?up|gc)pp(2|panjang)|pp(gro?up|gc)(2|panjang|full?)))$/i
 
-handler.group = true
 handler.admin = true
 handler.botAdmin = true
+handler.group = true
 
 export default handler
 
