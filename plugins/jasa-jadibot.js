@@ -3,7 +3,7 @@
 
 let handler = async (m, { conn, command }) => {
 	let ini_txt = `❤‍🩹 *[ Chat Dengan Creator ]*
-wa.me/6282337245566
+wa.me/6281257172080
 
 ╔╣ *PREMIUM USER*
 ║ • Infinity Limit
