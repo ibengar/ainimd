@@ -1,86 +1,75 @@
-//import { createRequire } from 'module';
-//const require = createRequire(import.meta.url);
+let { MessageType } = require('@adiwajshing/baileys')
+let qrcode = require('qrcode')
 
-let handler = async (m, { conn, command }) => {
-	let ini_txt = `❤‍🩹 *[ Chat Dengan Creator ]*
-wa.me/6281257172080
+if (global.conns instanceof Array) console.log()// for (let i of global.conns) global.conns[i] && global.conns[i].user ? global.conns[i].close().then(() => delete global.conns[id] && global.conns.splice(i, 1)).catch(global.conn.logger.error) : delete global.conns[i] && global.conns.splice(i, 1)
+else global.conns = []
 
-╔╣ *PREMIUM USER*
-║ • Infinity Limit
-║ • Full Akses Private Chat
-╚══╣ *Harga :* Rp.10.000 / bulan
-
-╔╣ *SEWA BOT*
-║ • Dapat Premium
-║ • Bebas Invit ke 1 Grup
-╚══╣ *Harga :* Rp.15.000 / bulan
-
-╔╣ *JASA RUN BOT*
-║ • Nebeng Run SC Via RDP
-║ • SC wajib *plugin*, bukan case
-╚══╣ *Harga :* Rp.20.000 / bulan
-
-╔╣ *JADI BOT*
-║ • Jadi Bot Azami Always ON
-║ • Custom Namabot, Owner, rules, dll.
-║ • Bisa Req Tampilan atau Fitur
-╚══╣ *Harga :* Rp.25.000 / bulan
-
-- Pembayaran via *OVO / Dana / GoPay*
-  *( tidak ada opsi lain )*
-  ke nomor 082337245566
-- Whatsapp Multi Device
-- Run via RDP (Always ON)
-- Request Fitur? *Chat Link Creator di atas.*`
-	//m.reply(ini_txt)
-	command = command.toLowerCase()
-	conn.relayMessage(m.chat,  {
-		requestPaymentMessage: {
-			currencyCodeIso4217: 'USD',
-			amount1000: command.includes('prem') ? '0670' : command.includes('sewa') ? 1010 : 1680,
-			requestFrom: '0@s.whatsapp.net',
-			noteMessage: {
-				extendedTextMessage: {
-					text: ini_txt,
-					contextInfo: {
-						mentionedJid: [m.sender],
-						externalAdReply: {
-							showAdAttribution: true
-						}
-					}
-				}
-			}
-		}
-	}, {})
-	
-	/*const { prepareWAMessageMedia, generateWAMessageFromContent, proto } = require("@adiwajshing/baileys")
-	let fs = require('fs')
-	var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./media/anime.jpg') }, { upload: conn.waUploadToServer })
-	var catalog = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-		"productMessage": {
-			"product": {
-				"productImage": messa.imageMessage,
-				"productId": "5838766206142201",
-				"title": `Sewa Bot`,
-				"description": `gaktau`,
-				"currencyCode": "IDR",
-				"bodyText": `gaktaukalo`,
-				"footerText": `koncol`,
-				"priceAmount1000": "15000000",
-				"productImageCount": 100,
-				"firstImageId": 1,
-				"salePriceAmount1000": "15000000",
-				"retailerId": `ꪶ𝐖𝐫𝐚𝐧𝐳𝐓𝐚𝐦𝐩𝐚𝐧𝐳⿻ꫂ`,
-				"url": "wa.me/6282337245566"
-			},
-			"businessOwnerJid": "6282337245566@s.whatsapp.net",
-		}
-	}), { userJid: m.chat, quoted: m })
-	conn.relayMessage(m.chat, catalog.message, { messageId: catalog.key.id })*/
+let handler  = async (m, { conn, args, usedPrefix, command }) => {
+  let parent = args[0] && args[0] == 'plz' ? conn : global.conn
+  let auth = false
+  if ((args[0] && args[0] == 'plz') || global.conn.user.jid == conn.user.jid) {
+    let id = global.conns.length
+    let conn = new global.conn.constructor()
+    if (args[0] && args[0].length > 200) {
+      let json = Buffer.from(args[0], 'base64').toString('utf-8')
+      // global.conn.reply(m.isGroup ? m.sender : m.chat, json, m)
+      let obj = JSON.parse(json)
+      await conn.loadAuthInfo(obj)
+      auth = true
+    }
+    conn.on('qr', async qr => {
+      let scan = await parent.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), 'qrcode.png', 'Scan QR ini untuk jadi bot sementara\n\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk WhatsApp Web\n3. Scan QR ini \nQR Expired dalam 20 detik', m)
+      setTimeout(() => {
+        parent.deleteMessage(m.chat, scan.key)
+      }, 30000)
+    })
+    conn.welcome = global.conn.welcome + ''
+    conn.bye = global.conn.bye + ''
+    conn.spromote = global.conn.spromote + ''
+    conn.sdemote = global.conn.sdemote + ''
+    conn.handler = global.conn.handler.bind(conn)
+    conn.onDelete = global.conn.onDelete.bind(conn)
+    conn.onParticipantsUpdate = global.conn.onParticipantsUpdate.bind(conn)
+    conn.on('chat-update', conn.handler)
+    conn.on('message-delete', conn.onDelete)
+    conn.on('group-participants-update', conn.onParticipantsUpdate)
+    conn.regenerateQRIntervalMs = null
+    conn.connect().then(async ({user}) => {
+      parent.reply(m.chat, 'Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2), m)
+      if (auth) return
+      await parent.sendMessage(user.jid, `Kamu bisa login tanpa qr dengan pesan dibawah ini. untuk mendapatkan kode lengkapnya, silahkan kirim *${usedPrefix}getcode* untuk mendapatkan kode yang akurat`, MessageType.extendedText)
+      parent.sendMessage(user.jid, `${usedPrefix + command} ${Buffer.from(JSON.stringify(conn.base64EncodedAuthInfo())).toString('base64')}`, MessageType.extendedText)
+    })
+    setTimeout(() => {
+      if (conn.user) return
+      conn.close()
+      let i = global.conns.indexOf(conn)
+      if (i < 0) return
+      delete global.conns[i]
+      global.conns.splice(i, 1)
+    }, 60000)
+    conn.on('close', () => {
+      setTimeout(async () => {
+        try {
+          if (conn.state != 'close') return
+          if (conn.user && conn.user.jid)
+            parent.sendMessage(conn.user.jid, `Koneksi terputus...`, MessageType.extendedText)
+          let i = global.conns.indexOf(conn)
+          if (i < 0) return
+          delete global.conns[i]
+          global.conns.splice(i, 1)
+        } catch (e) { conn.logger.error(e) }
+      }, 30000)
+    })
+    global.conns.push(conn)
+  } else throw 'Tidak bisa membuat bot didalam bot!\n\nhttps://wa.me/' + global.conn.user.jid.split`@`[0] + '?text=.jadibot'
 }
+handler.help = ['jadibot']
+handler.tags = ['group']
 
-handler.menugroup = ['jadibot']
-handler.tagsgroup = ['group']
-handler.command = /^(jadibot)$/i
+handler.command = /^jadibot$/i
 
-export default handler
+handler.limit = true
+handler.premium = true
+
+module.exports = handler
