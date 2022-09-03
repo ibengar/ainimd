@@ -1,27 +1,20 @@
-let handler = async (m, { conn, usedPrefix, command }) => {
-  await conn.reply(m.chat, `“${pickRandom(global.bucin)}”`, '', '', m)
+let fs = require('fs')
+let handler = async (m, { conn }) => {
+let anu =`
+─────〔 *Galau* 〕─────
+${pickRandom(global.ngawur)}
+`
+conn.reply(m.chat, anu, m) 
 }
 handler.help = ['ngawur']
 handler.tags = ['quotes']
 handler.command = /^(ngawur)$/i
-handler.owner = false
-handler.mods = false
-handler.premium = false
-handler.group = false
-handler.private = false
-
-handler.admin = false
-handler.botAdmin = false
-
-handler.fail = null
-
 module.exports = handler
 
 function pickRandom(list) {
-  return list[Math.floor(list.length * Math.random())]
+    return list[Math.floor(list.length * Math.random())]
 }
 
-// https://jalantikus.com/tips/kata-kata-bucin/
 global.ngawur = [
 "Hargai kedua orang tuamu, mereka berhasil lulus dari sekolah tanpa bantuan Google",
 "Seorang laki-laki sukses adalah yang bisa menghasilkan uang lebih dari yang dihabiskan istrinya. Seorang wanita sukses adalah yang bisa mencari laki laki seperti itu.",
