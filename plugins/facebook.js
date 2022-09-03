@@ -1,12 +1,26 @@
-const { facebookdl, facebookdlv2 } = require('@bochilteam/scraper')
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) throw `Use example ${usedPrefix}${command} https://fb.watch/azFEBmFRcy/`
-    const { result } = await facebookdl(args[0]).catch(async _ => await facebookdlv2(args[0]))
-    for (const { url, isVideo } of result.reverse()) conn.sendFile(m.chat, url, `facebook.${!isVideo ? 'bin' : 'mp4'}`, `ðŸ”— *Url:* ${url}`, m)
+import xa from 'xfarr-api'
+
+let handler = async(m, { conn, text, usedPrefix, command }) => {
+	if (!text) throw `*Usage : ${usedPrefix + command} fb_url_video*\n\nExample :\n${usedPrefix + command} https://web.facebook.com/watch/?v=892725951575913`
+	if (!(text.includes('http://') || text.includes('https://'))) throw `url invalid, please input a valid url. Try with add http:// or https://`
+	try {
+		let anu = await xa.downloader.facebook(text)
+		try {
+			await conn.sendFile(m.chat, anu.sd, 'fbhd.mp4', `_Low Quality :_\n${anu.title}\n⭔ by ${anu.author}`, m)
+		} catch {
+			await conn.sendFile(m.chat, anu.hd, 'fbhd.mp4', `_High Quality :_\n${anu.title}\n⭔ by ${anu.author}`, m)
+		}
+	} catch (e) {
+		console.log(e)
+		m.reply(`Invalid facebook url / group di private.`)
+	}
 }
-handler.help = ['fb'].map(v => v + ' <url>')
-handler.tags = ['downloader']
 
-handler.command = /^((facebook|fb)(downloder|dl)?)$/i
+handler.menudownload = ['fb <url>']
+handler.tagsdownload = ['search']
+handler.command = /^((fb|facebook)(dl)?)$/i
 
-module.exports = handler
+handler.premium = true
+handler.limit = true
+
+export default handler
