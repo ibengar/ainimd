@@ -1,7 +1,7 @@
 let fs = require('fs')
 let handler = async (m, { conn }) => {
 let anu =`
-─────〔 *Galau* 〕─────
+─────〔 *ngawur* 〕─────
 ${pickRandom(global.ngawur)}
 `
 conn.reply(m.chat, anu, m) 
