@@ -67,7 +67,7 @@ handler.tags = ['sticker']
 handler.command = /^(stic?kertele(gram)?)$/i
 
 handler.limit = true
-handler.premium = true
+handler.premium = false
 
 module.exports = handler
 
