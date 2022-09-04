@@ -8,7 +8,7 @@ let handler  = async (m, { conn }) => {
   } else throw '_eeeeeiiittsssss..._'
 }
 handler.help = ['debounce' + (process.send ? '' : ' (Not working)')]
-handler.tags = ['owner']
+handler.tags = ['host']
 handler.command = /^debounce$/i
 handler.owner = true
 handler.mods = false
