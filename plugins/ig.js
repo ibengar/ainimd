@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 let handler = async (m, { conn, args }) => {
   if (!args[0]) throw 'Uhm...url nya mana?'
   let url = args[0]
-  let res = await fetch(`https://api.lolhuman.xyz/api/instagram?apikey=31d6c747fd7bd984fb6f7d95&url=${args[0]}`) 
+  let res = await fetch(`https://api.lolhuman.xyz/api/instagram?apikey=cd7227d604d7acca5d19b4cc&url=${args[0]}`) 
   if (res.status !== 200) {
     res.text()
     throw res.status
