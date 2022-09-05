@@ -59,7 +59,7 @@ Isi Pesan : ${args[1]}
 }
 
 handler.help = ['menfess <nomor|pesan>']
-handler.tags = ['entertainment']
+handler.tags = ['group']
 handler.command = /^(menfess|chat)$/i
 
 export default handler
