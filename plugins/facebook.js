@@ -1,12 +1,15 @@
-const { facebookdlv2 } = require('@bochilteam/scraper')
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-    if (!args[0]) throw `Use example ${usedPrefix}${command} https://fb.watch/azFEBmFRcy/`
-    const { result } =  await facebookdlv2(args[0]))
-    for (const { url, isVideo } of result.reverse()) conn.sendFile(m.chat, url, `facebook.${!isVideo ? 'bin' : 'mp4'}`, `ðŸ”— *Url:* ${url}`, m)
+import fbDownloader from 'fb-downloader-scrapper'
+let handler = async (m, { conn, args, command, usedPrefix }) => {
+    if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.facebook.com/groups/2376867322615448/permalink/2487994558169390/`
+    let res = await fbDownloader(args[0])
+    for (let result of res.download) {
+    conn.sendFile(m.chat, result.url, 'facebook.mp4', author, m)
+  }
 }
-handler.help = ['fb'].map(v => v + ' <url>')
+handler.help = ['facebook'].map(v => v + ' <url>')
 handler.tags = ['downloader']
+handler.command = /^((facebook|fb)(downloder|dl)?)$/i
 
-handler.command = /^((facebook|fb)(downloder|fb)?)$/i
+handler.limit = true
 
-module.exports = handler
+export default handler
