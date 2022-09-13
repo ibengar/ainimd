@@ -1,17 +1,23 @@
-/*let fetch = require('node-fetch')
-let handler = async(m, { conn, text }) => {
-    if (!text) throw `Harap masukan judulnya\n\n\nContoh : .xnxxsearch segs brutal`
-    let res = await fetch(`https://api.zacros.my.id/nsfw/xnxx-search?query=${text}`)
-    if (!res.ok) throw await res.text()
-    let json = await res.json()
-    let teks = json.result.map(res => res.subject + \n*Title:* ${v.title}\n*Info:* ${v.info}\n*Link:* ${v.link}\n==============\n`).join('\n') 
-    m.reply(teks)
-    else throw json
-}
-handler.help = ['xnxxsearch <query>']
-handler.tags = ['premium']
-handler.command = /^(xnxxsearch)$/i
-handler.premium = true
-handler.limit = 6
+let fetch = require('node-fetch')
 
-module.exports = handler*/
+let handler = async (m, { conn, text, command, usedPrefix }) => {
+    let chat = db.data.chats[m.chat]
+    /*if (!chat.nsfw || chat.isBanned) throw `Fitur NSFW Tidak Aktif`*/
+    if (!text) throw `text nya mana?\n\ncontoh:\n${usedPrefix + command} jepang`
+    let res = await fetch(API('ibengrest', '/api/downloader/xnxx', { query: text }, 'apikey'))
+    if (!res.ok) return await res.text()
+    let json = await res.json()
+    if (json.status != 200) throw json
+    let capt = `
+*XNXX Search*
+
+${json.result.map(v => `*${v.title}*\npenonton: ${v.views}\nDurasi: ${v.duration}\nUploader: ${v.uploader}\nLink: ${v.link}\nThumbnail: ${v.thumbnail}`).join`\n\n`}
+    `.trim()
+    conn.sendFile(m.chat, json.result[0].thumbnail, '', capt, m)
+}
+handler.help = ['xnxxsearch'].map(v => v + ' <teks>')
+handler.tags = ['premium']
+handler.command = /^xnxxsearch$/i
+handler.register = false
+handler.premium = false
+module.exports = handler
