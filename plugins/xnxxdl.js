@@ -1,17 +1,34 @@
 let fetch = require('node-fetch')
-let fs = require('fs')
-let handler = async(m, { conn, usedPrefix, text, command }) => {
-    if (!text) throw `Harap masukkan URL sebagai teks \n\nContoh : .xnxxdl https://www.xnxx.com/video-13ezat5c/fuck_while_other_is_away`
-    const sentMsg = await m.reply('*_Tunggu Sebentar Kami Sedang Memprosesnya..._*')
-    let res = await fetch(`https://api.zacros.my.id/nsfw/xnxx-download?link=${text}`)
-    if (!res.ok) throw await `${res.status} ${res.statusText}`
+
+let handler = async (m, { conn, text, command, usedPrefix }) => {
+    let chat = db.data.chats[m.chat]
+    if (!chat.nsfw || chat.isBanned) throw `Fitur NSFW Tidak Aktif`
+    if (!text) throw `url nya mana?\n\ncontoh:\n${usedPrefix + command} https://www.xnxx.com/video-wdsipd3/jealous_mother_blows_son_uncensored`
+    if (!/^https?:\/\/(www\.)?xnxx\.com/.test(text)) throw `url salah!\n\ncontoh:\n${usedPrefix + command} https://www.xnxx.com/video-wdsipd3/jealous_mother_blows_son_uncensored`
+    let res = await fetch(API('lol', '/api/xnxx', { url: text }, 'apikey'))
+    if (!res.ok) return await res.text()
     let json = await res.json()
-    await conn.sendFile(m.chat, json.result.files.low, 'bkp.mp4', `Title : ${json.result.title}\nLink : ${json.result.link}\n\nVideo msih kurang HD ?coba klik link di bawah ini \n\n\nHD : ${json.result.files.high}`, m)
+    if (json.status != 200) throw json
+    let { title, thumbnail, duration, view, rating, like, dislike, comment, tag, description, link } = json.result
+    conn.sendFile(m.chat, thumbnail, thumbnail, `
+tunggu video lagi dikirim
+Judul: ${title}
+Durasi: ${duration}
+Penonton: ${view}
+Rating: ${rating}
+Suka: ${like}
+Gk suka: ${dislike}
+Total Komen: ${comment}
+Tag: ${tag}
+Deskripsi: ${description}
+Link:
+${link.map((v, i) => `${i + 1}. ${v.link} (${v.type})`).join`\n`}
+    `.trim(), m)
+    conn.sendFile(m.chat, link[1].link, '', 'kocok terus tu batang', m)
 }
-handler.help = ['xnxxdl *link*']
-handler.tags = ['downloader', 'asupan']
-handler.command = /^xnxxdl$/i
-
-handler.limit = 50
-
+handler.help = ['xnxx'].map(v => v + ' <url>')
+handler.tags = ['premium']
+handler.command = /^xnxx$/i
+handler.register = false
+handler.premium = false
 module.exports = handler
