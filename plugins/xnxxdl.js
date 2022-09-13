@@ -30,5 +30,5 @@ handler.help = ['xnxx'].map(v => v + ' <url>')
 handler.tags = ['premium']
 handler.command = /^xnxx$/i
 handler.register = false
-handler.premium = false
+handler.premium = true
 module.exports = handler
