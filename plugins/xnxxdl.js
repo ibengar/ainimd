@@ -2,7 +2,7 @@ let fetch = require('node-fetch')
 
 let handler = async (m, { conn, text, command, usedPrefix }) => {
     let chat = db.data.chats[m.chat]
-    if (!chat.nsfw || chat.isBanned) throw `Fitur NSFW Tidak Aktif`
+    /*if (!chat.nsfw || chat.isBanned) throw `Fitur NSFW Tidak Aktif`*/
     if (!text) throw `url nya mana?\n\ncontoh:\n${usedPrefix + command} https://www.xnxx.com/video-wdsipd3/jealous_mother_blows_son_uncensored`
     if (!/^https?:\/\/(www\.)?xnxx\.com/.test(text)) throw `url salah!\n\ncontoh:\n${usedPrefix + command} https://www.xnxx.com/video-wdsipd3/jealous_mother_blows_son_uncensored`
     let res = await fetch(API('lol', '/api/xnxx', { url: text }, 'apikey'))
