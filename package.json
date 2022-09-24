@@ -1,7 +1,7 @@
 {
-    "name": "iBeng-Md",
-    "version": "0.5.1",
-    "description": "",
+    "name": "iBeng-Bot",
+    "version": "07.06.98",
+    "description": "Customizable WhatsApp Bot",
     "depecrated": false,
     "main": "index.js",
     "directories": {
@@ -11,8 +11,9 @@
     },
     "scripts": {
         "start": "node index.js",
+        "mongo": "node .",
         "test": "node test.js",
-        "test2": "nodemon index.js"
+        "test2": "nodemon index.js --server --autocleartmp"
     },
     "keywords": [
         "termux-whatsapp-bot",
@@ -20,28 +21,31 @@
         "whatsapp",
         "js-whatsapp",
         "whatsapp",
-        "ShiraoriBOT",
-        "wabot-aq"
+        "Games-wabot",
+        "wabot-aq",
+        "multi-device",
+        "MD",
+        "baileys-md"
     ],
-    "homepage": "https://github.com/ilmanhdyt/ShiraoriBOT-Md",
+    "homepage": "https://github.com/ibengar",
     "author": {
-        "name": "Ilman"
+        "name": "Muhammad Ridwan Reynaldy"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ilmanhdyt/ShiraoriBOT-Md.git"
+        "url": "git+https://github.com/ibengar"
     },
     "bugs": {
-        "url": "https://github.com/ilmanhdyt/ShiraoriBOT-Md/issues"
+        "url": "https://github.com/ibengar"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@adiwajshing/baileys": "^4.1.0",
+        "@adiwajshing/baileys": "github:amiruldev20/baileys",
         "@adiwajshing/keyed-db": "^0.2.4",
-        "awesome-phonenumber": "^2.64.0",
-        "@bochilteam/scraper": "^0.0.2",
+        "@bochilteam/scraper": "^3.0.0",
         "acrcloud": "^1.4.0",
         "async": "^3.2.3",
+        "awesome-phonenumber": "^2.73.0",
         "axios": "^0.24.0",
         "base64-to-image": "^1.0.2",
         "brainly-scraper": "^1.0.3",
