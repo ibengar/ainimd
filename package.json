@@ -1,9 +1,9 @@
 {
-    "name": "iBeng-Bot",
-    "version": "07.06.98",
-    "description": "Customizable WhatsApp Bot",
-    "depecrated": false,
+    "name": "Botz-iBeng",
+    "version": "2.10.18",
+    "description": "Jangan Lupa Follow Ig : achmdrizky148",
     "main": "index.js",
+    "type": "module",
     "directories": {
         "lib": "lib",
         "src": "src",
@@ -11,9 +11,8 @@
     },
     "scripts": {
         "start": "node index.js",
-        "mongo": "node .",
         "test": "node test.js",
-        "test2": "nodemon index.js --server --autocleartmp"
+        "test2": "nodemon index.js"
     },
     "keywords": [
         "termux-whatsapp-bot",
@@ -27,25 +26,25 @@
         "MD",
         "baileys-md"
     ],
-    "homepage": "https://github.com/ibengar",
+    "homepage": "https://github.com/BochilGaming/games-wabot",
     "author": {
-        "name": "Muhammad Ridwan Reynaldy"
+        "name": "BochilGaming"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ibengar"
+        "url": "git+https://github.com/BochilGaming/games-wabot.git"
     },
     "bugs": {
-        "url": "https://github.com/ibengar"
+        "url": "https://github.com/BochilGaming/games-wabot/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@adiwajshing/baileys": "github:amiruldev20/baileys",
+        "@adiwajshing/baileys": "^4.0.1",
+        "@bochilteam/scraper": "^2.0.0",
+        "awesome-phonenumber": "^2.68.0",
         "@adiwajshing/keyed-db": "^0.2.4",
-        "@bochilteam/scraper": "^3.0.0",
-        "acrcloud": "^1.4.0",
+       "acrcloud": "^1.4.0",
         "async": "^3.2.3",
-        "awesome-phonenumber": "^2.73.0",
         "axios": "^0.24.0",
         "base64-to-image": "^1.0.2",
         "brainly-scraper": "^1.0.3",
