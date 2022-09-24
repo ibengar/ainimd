@@ -40,7 +40,8 @@
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@adiwajshing/baileys": "github:amiruldev20/baileys",        "@bochilteam/scraper": "^3.0.0",
+        "@adiwajshing/baileys": "github:amiruldev20/baileys",       
+        "@bochilteam/scraper": "^3.0.0",
         "acrcloud": "^1.4.0",
         "async": "^3.2.3",
         "awesome-phonenumber": "^2.73.0",
