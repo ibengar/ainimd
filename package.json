@@ -1,3 +1,39 @@
+{
+    "name": "BOT-MD",
+    "version": "3.5.1",
+    "description": "Simple Bot WhatsApp with Baileys Multi Device",
+    "depecrated": false,
+    "main": "index.js",
+    "directories": {
+        "lib": "lib",
+        "src": "src",
+        "plugins": "plugins"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "test": "node test.js",
+        "test2": "nodemon index.js"
+    },
+    "keywords": [
+        "termux-whatsapp-bot",
+        "whatsapp-bot",
+        "whatsapp",
+        "js-whatsapp",
+        "whatsapp",
+        "mybot-md",
+        "family-md",
+        "family-bot",
+        "enjela",
+        "shiraori-md",
+        "stikerin",
+        "wabot-aq"
+    ],
+    "homepage": "https://github.com/sadteams/bot-md",
+    "author": {
+        "name": "Kangsad01"
+    },
+    "repository": {
+        "type": "git",
         "url": "git+https://github.com/sadteams/bot-md.git"
     },
     "bugs": {
