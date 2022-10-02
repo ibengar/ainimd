@@ -1,5 +1,5 @@
 {
-    "name": "iBeng-Bot",
+    "name": "ibeng-Bot",
     "version": "07.06.98",
     "description": "Customizable WhatsApp Bot",
     "depecrated": false,
@@ -42,8 +42,9 @@
     "dependencies": {
         "@adiwajshing/baileys": "github:amiruldev20/baileys",
         "@adiwajshing/keyed-db": "^0.2.4",
-        "@bochilteam/scraper": "^3.0.0",
+        "@bochilteam/scraper": "^2.0.0",
         "acrcloud": "^1.4.0",
+        "anonfile-lib": "^1.0.1",
         "async": "^3.2.3",
         "awesome-phonenumber": "^2.73.0",
         "axios": "^0.24.0",
@@ -111,6 +112,7 @@
         "url-regex-safe": "^2.1.0",
         "util": "^0.12.4",
         "yargs": "^17.5.1",
+        "yt-search": "^2.10.3",
         "zs-extract": "^1.4.1"
     }
 }
