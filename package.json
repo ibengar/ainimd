@@ -1,7 +1,7 @@
 {
-    "name": "BOT-MD",
-    "version": "3.5.1",
-    "description": "Simple Bot WhatsApp with Baileys Multi Device",
+    "name": "ibeng-Bot",
+    "version": "07.06.98",
+    "description": "Customizable WhatsApp Bot",
     "depecrated": false,
     "main": "index.js",
     "directories": {
@@ -11,8 +11,9 @@
     },
     "scripts": {
         "start": "node index.js",
+        "mongo": "node .",
         "test": "node test.js",
-        "test2": "nodemon index.js"
+        "test2": "nodemon index.js --server --autocleartmp"
     },
     "keywords": [
         "termux-whatsapp-bot",
@@ -20,34 +21,32 @@
         "whatsapp",
         "js-whatsapp",
         "whatsapp",
-        "mybot-md",
-        "family-md",
-        "family-bot",
-        "enjela",
-        "shiraori-md",
-        "stikerin",
-        "wabot-aq"
+        "Games-wabot",
+        "wabot-aq",
+        "multi-device",
+        "MD",
+        "baileys-md"
     ],
-    "homepage": "https://github.com/sadteams/bot-md",
+    "homepage": "https://github.com/Aiinne",
     "author": {
-        "name": "Kangsad01"
+        "name": "Muhammad Ridwan Reynaldy"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/sadteams/bot-md.git"
+        "url": "git+https://github.com/Aiinne"
     },
     "bugs": {
-        "url": "https://github.com/sadteams/bot-md/issues"
+        "url": "https://github.com/Aiinne"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
-        "@adiwajshing/baileys": "github:sadteams/baileys",
+        "@adiwajshing/baileys": "github:amiruldev20/baileys",
         "@adiwajshing/keyed-db": "^0.2.4",
-        "@bochilteam/scraper": "2.0.0",
-        "awesome-phonenumber": "^2.69.0",
+        "@bochilteam/scraper": "^2.0.0",
         "acrcloud": "^1.4.0",
         "anonfile-lib": "^1.0.1",
         "async": "^3.2.3",
+        "awesome-phonenumber": "^2.73.0",
         "axios": "^0.24.0",
         "base64-to-image": "^1.0.2",
         "brainly-scraper": "^1.0.3",
