@@ -284,7 +284,7 @@ module.exports = {
                     if (!isNumber(user.lastlatih)) user.lastlatih = 0
                 } else db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 50,
+                    limit: 1000,
                     joinlimit: 1,
                     spammer: 0,
                     limitspam: 0,
@@ -822,7 +822,7 @@ module.exports = {
                                 console.error(e)
                             }
                         }
-                        if (m.limit) m.reply(+ m.limit + ' Limit terpakai')
+                       // if (m.limit) m.reply(+ m.limit + ' Limit used')
                     }
                     break
                 }
@@ -866,11 +866,11 @@ module.exports = {
                 }
             }
 
-            // try {
-            //     require('./lib/print')(m, this)
-            // } catch (e) {
-            //     console.log(m, m.quoted, e)
-            // }
+             try {
+                 require('./lib/print')(m, this)
+             } catch (e) {
+                 console.log(m, m.quoted, e)
+             }
             if (opts['autoread']) await this.readMessages([m.key]) //this.chatRead(m.chat, m.isGroup ? m.sender : undefined, m.id || m.key.id).catch(() => { })
         }
     },
@@ -883,6 +883,9 @@ module.exports = {
         switch (action) {
             case 'add':
             case 'remove':
+		case 'leave':
+		case 'invite':
+		case 'invite_v4':
                 if (chat.welcome) {
                     let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                     for (let user of participants) {
